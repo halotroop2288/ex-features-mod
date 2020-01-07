@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "###",
+        "OOO"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:black_concrete"
+        },
+        "O": {
+            "tag": "minecraft:signs"
+        }
+    },
+    "result": {
+		"item": "exfeatures:board_chalkboard"
+	},
+    "group": "board_chalkboard"
+}

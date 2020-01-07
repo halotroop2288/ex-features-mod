@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.github.halotroop2288.exfeatures.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "WolfEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

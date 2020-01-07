@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "exfeatures:cyan_flower"
+        }
+    ],
+    "result": {
+        "item": "minecraft:cyan_dye",
+        "count": 1
+    },
+    "group": "cyan_dye"
+}

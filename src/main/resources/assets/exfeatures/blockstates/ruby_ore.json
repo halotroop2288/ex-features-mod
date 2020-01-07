@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "exfeatures:block/ruby_ore" }
+    }
+}

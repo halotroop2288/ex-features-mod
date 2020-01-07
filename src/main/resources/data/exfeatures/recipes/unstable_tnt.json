@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "minecraft:fire_charge"
+        },
+        {
+            "item": "minecraft:tnt"
+        }
+    ],
+    "result": {
+        "item": "exfeatures:unstable_tnt",
+        "count": 1
+    },
+    "group": "unstable_tnt"
+}

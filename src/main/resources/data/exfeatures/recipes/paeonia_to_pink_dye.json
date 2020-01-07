@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "exfeatures:paeonia"
+        }
+    ],
+    "result": {
+        "item": "minecraft:pink_dye",
+        "count": 1
+    },
+    "group": "pink_dye"
+}

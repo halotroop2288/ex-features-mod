@@ -1,0 +1,15 @@
+{
+	"item.exfeatures.plate_helmet": "Plate Helmet",
+	"item.exfeatures.plate_chestplate": "Plate Chestplate",
+	"item.exfeatures.studded_helmet": "Studded Helmet",
+	"item.exfeatures.studded_chestplate": "Studded Chestplate",
+	"item.exfeatures.studded_leggings": "Studded Leggings",
+	"item.exfeatures.studded_boots": "Studded Boots",
+	"item.exfeatures.ruby": "Ruby",
+	"item.exfeatures.quiver": "Quiver",
+	"block.exfeatures.ruby_ore": "Ruby Ore",
+	"block.exfeatures.rose": "Rose",
+	"block.exfeatures.paeonia": "Paeonia",
+	"block.exfeatures.cyan_flower": "Cyan Flower",
+	"menu.playtutorial": "Play Tutorial Level"
+}
