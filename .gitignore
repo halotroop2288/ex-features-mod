@@ -34,3 +34,7 @@ run/
 logs/
 bin/
 mods/
+
+# paint.net
+
+*.pdn
