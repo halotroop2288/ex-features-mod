@@ -38,7 +38,7 @@ public class InGameHUDMixin extends DrawableHelper
 			this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
 			if ((this.client.player.isSprinting() || this.client.player.isFallFlying() || this.client.player.isSneaking()
 				|| this.player.isClimbing() || this.client.player.isSwimming() || this.client.player.abilities.flying)
-				&& this.client.options.perspective == 0 && !this.client.player.isInvisible()
+				&& this.client.options.perspective == 0 && !this.client.player.isInvisible() && MinecraftClient.isHudEnabled()
 				&& (currentScreen == null /*|| currentScreen instanceof [F3+ESC Screen]*/))
 				drawPlayerPreview(25, 50, 20);
 		}
