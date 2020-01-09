@@ -19,13 +19,11 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.render.model.BakedModel;
 import net.minecraft.client.render.model.BakedQuad;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.util.math.Matrix4f;
@@ -33,23 +31,17 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.GameMode;
-import net.minecraft.world.level.LevelGeneratorType;
-import net.minecraft.world.level.LevelInfo;
 
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin extends Screen
 {
 	private static String[] MINECRAFT_LOGO;
-	
-	private static char CHAR_TEXT;
 	private static ItemStack BRUSH_TEXT;
 	private LogoEffectRandomizer[][] logoEffects;
 	private static MatrixStack.Entry MATRIX_STACK_ENTRY;
 	private static int MISSING_COLOUR;
-
-    private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferDark;
-    private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferLight;
+	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferDark;
+	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferLight;
 
 	public TitleScreenMixin(Text title)
 	{
@@ -60,19 +52,18 @@ public class TitleScreenMixin extends Screen
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info)
 	{
-		System.out.println("Defining variables.");
 		MISSING_COLOUR = 0xF000F0;
 		MATRIX_STACK_ENTRY = new MatrixStack().peek();
-		CHAR_TEXT = '*';
 		MINECRAFT_LOGO = new String[]
-		{// @formatter:off
+		{ // @formatter:off
 			" *   * * *   * *** *** *** *** *** ***",
 			" ** ** * **  * *   *   * * * * *    * ",
 			" * * * * * * * **  *   **  *** **   * ",
 			" *   * * *  ** *   *   * * * * *    * ",
 			" *   * * *   * *** *** * * * * *    * "
 		};// @formatter:on
-		System.out.println("Variables set.");
+		if (this.logoEffects == null)
+			createLogoEffects();
 	}
 
 	@Inject(at = @At("TAIL"), method = "tick()V")
@@ -91,52 +82,68 @@ public class TitleScreenMixin extends Screen
 	@Inject(at = @At("RETURN"), method = "initWidgetsNormal(II)V")
 	public void drawMenuButton(CallbackInfo info)
 	{
-		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
-		{
-			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
-				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
-		}));
-		System.out.println("Placed tutorial button");
+		// Disabled for being broken.
+		//		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
+		//		{
+		//			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
+		//				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+		//		}));
+		//		System.out.println("Placed tutorial button");
 	}
 
 	@Inject(at = @At("TAIL"), method = "render", remap = false)
 	private void render(CallbackInfo info)
 	{
 		float partialTicks = this.minecraft.getTickDelta();
+		if (this.logoEffects == null)
+			createLogoEffects();
+		if (BRUSH_TEXT == null || textBufferDark == null || textBufferLight == null)
+		{
+			System.out.println("Defining text brushes");
+			BRUSH_TEXT = new ItemStack(Blocks.STONE);
+			textBufferLight = bakeBlock(BRUSH_TEXT, 1);
+			textBufferDark = bakeBlock(BRUSH_TEXT, 0);
+		}
 		this.drawLogo(partialTicks);
 	}
 
 	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> bakeBlock(ItemStack itemStack, float brightness)
 	{
-		BakedModel model = MinecraftClient.getInstance().getItemRenderer().getModels().getModel(itemStack);
-		BufferBuilder buffer = new BufferBuilder(4 * Direction.values().length);
-		buffer.begin(GL11.GL_QUADS, VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL);
-		Random random = new Random();
-		for (Direction direction : Direction.values())
+		try
 		{
-			for (BakedQuad quad : model.getQuads(null, direction, random))
-			{ buffer.quad(MATRIX_STACK_ENTRY, quad, brightness, brightness, brightness, MISSING_COLOUR, OverlayTexture.DEFAULT_UV); }
+			BakedModel model = MinecraftClient.getInstance().getItemRenderer().getModels().getModel(itemStack);
+			BufferBuilder buffer = new BufferBuilder(4 * Direction.values().length);
+			buffer.begin(GL11.GL_QUADS, VertexFormats.POSITION_COLOR_TEXTURE_LIGHT_NORMAL);
+			Random random = new Random();
+			for (Direction direction : Direction.values())
+			{
+				for (BakedQuad quad : model.getQuads(null, direction, random))
+				{ buffer.quad(MATRIX_STACK_ENTRY, quad, brightness, brightness, brightness, MISSING_COLOUR, OverlayTexture.DEFAULT_UV); }
+			}
+			buffer.end();
+			return buffer.popData();
 		}
-		buffer.end();
-		return buffer.popData();
+		catch (Exception e)
+		{
+			System.out.println(e.getCause());
+			return null;
+		}
 	}
 
-	public void drawLogo(float partialTicks)
+	private void createLogoEffects()
 	{
-		if (this.logoEffects == null)
+		System.out.println("Creating Logo Effects");
+		this.logoEffects = new LogoEffectRandomizer[MINECRAFT_LOGO[0].length()][MINECRAFT_LOGO.length];
+		Random random = new Random();
+		for (int i = 0; i < this.logoEffects.length; i++)
 		{
-			System.out.println("Creating Logo Effects");
-			this.logoEffects = new LogoEffectRandomizer[MINECRAFT_LOGO[0].length()][MINECRAFT_LOGO.length];
-			Random random = new Random();
-			for (int i = 0; i < this.logoEffects.length; i++)
-			{
-				for (int j = 0; j < this.logoEffects[i].length; j++)
-				{ this.logoEffects[i][j] = new LogoEffectRandomizer(random, i, j); }
-				BRUSH_TEXT = new ItemStack(Blocks.STONE);
-				textBufferLight = bakeBlock(BRUSH_TEXT, 1);
-				textBufferDark = bakeBlock(BRUSH_TEXT, 0);
-			}
+			for (int j = 0; j < this.logoEffects[i].length; j++)
+			{ this.logoEffects[i][j] = new LogoEffectRandomizer(random, i, j); }
 		}
+	}
+
+	private void drawLogo(float partialTicks)
+	{		
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glPushMatrix();
 		GL11.glLoadIdentity();
@@ -170,10 +177,18 @@ public class TitleScreenMixin extends Screen
 				for (int x = 0; x < MINECRAFT_LOGO[y].length(); x++)
 				{
 					char c = MINECRAFT_LOGO[y].charAt(x);
-					if (c == ' ')
+					if (c == ' ') continue;
+					else if (c == '*')
 					{
-						continue;
+						switch (pass)
+						{
+						case 0:
+							draw(textBufferDark);
+						case 1:
+							draw(textBufferLight);
+						}
 					}
+					else System.out.println("Bitch you dun fucked up the logo.");
 					
 					LogoEffectRandomizer logoeffectrandomizer = this.logoEffects[x][y];
 					float position = (float) (logoeffectrandomizer.lastTickPosition +
@@ -189,13 +204,6 @@ public class TitleScreenMixin extends Screen
 					}
 					GL11.glTranslatef(x, y, position);
 					GL11.glScalef(scale, scale, scale);
-					if (c == CHAR_TEXT)
-					{
-						if (pass == 0)
-							draw(textBufferDark);
-						else
-							draw(textBufferLight);
-					}
 					GL11.glPopMatrix();
 				}
 			}
