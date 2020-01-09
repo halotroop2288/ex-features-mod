@@ -43,6 +43,7 @@ public class TitleScreenMixin extends Screen
 	private static String[] MINECRAFT_LOGO;
 	
 	private static char CHAR_TEXT;
+	private static ItemStack BRUSH_TEXT;
 	private LogoEffectRandomizer[][] logoEffects;
 	private static MatrixStack.Entry MATRIX_STACK_ENTRY;
 	private static int MISSING_COLOUR;
@@ -63,8 +64,6 @@ public class TitleScreenMixin extends Screen
 		MISSING_COLOUR = 0xF000F0;
 		MATRIX_STACK_ENTRY = new MatrixStack().peek();
 		CHAR_TEXT = '*';
-		textBufferLight = bakeBlock(new ItemStack(Blocks.STONE), 1);
-		textBufferDark = bakeBlock(new ItemStack(Blocks.STONE), 0);
 		MINECRAFT_LOGO = new String[]
 		{// @formatter:off
 			" *   * * *   * *** *** *** *** *** ***",
@@ -100,7 +99,7 @@ public class TitleScreenMixin extends Screen
 		System.out.println("Placed tutorial button");
 	}
 
-	@Inject(at = @At("HEAD"), method = "render", remap = false)
+	@Inject(at = @At("TAIL"), method = "render", remap = false)
 	private void render(CallbackInfo info)
 	{
 		float partialTicks = this.minecraft.getTickDelta();
@@ -133,6 +132,9 @@ public class TitleScreenMixin extends Screen
 			{
 				for (int j = 0; j < this.logoEffects[i].length; j++)
 				{ this.logoEffects[i][j] = new LogoEffectRandomizer(random, i, j); }
+				BRUSH_TEXT = new ItemStack(Blocks.STONE);
+				textBufferLight = bakeBlock(BRUSH_TEXT, 1);
+				textBufferDark = bakeBlock(BRUSH_TEXT, 0);
 			}
 		}
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
