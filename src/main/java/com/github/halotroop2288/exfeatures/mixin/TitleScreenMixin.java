@@ -82,13 +82,13 @@ public class TitleScreenMixin extends Screen
 	@Inject(at = @At("RETURN"), method = "initWidgetsNormal(II)V")
 	public void drawMenuButton(CallbackInfo info)
 	{
-		// Disabled for being broken.
-		//		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
-		//		{
-		//			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
-		//				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
-		//		}));
-		//		System.out.println("Placed tutorial button");
+		// Disabled for being broken. @formatter off
+//		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
+//		{
+//			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
+//				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+//		}));
+		// @formatter on
 	}
 
 	@Inject(at = @At("TAIL"), method = "render", remap = false)
@@ -177,19 +177,7 @@ public class TitleScreenMixin extends Screen
 				for (int x = 0; x < MINECRAFT_LOGO[y].length(); x++)
 				{
 					char c = MINECRAFT_LOGO[y].charAt(x);
-					if (c == ' ') continue;
-					else if (c == '*')
-					{
-						switch (pass)
-						{
-						case 0:
-							draw(textBufferDark);
-						case 1:
-							draw(textBufferLight);
-						}
-					}
-					else System.out.println("Bitch you dun fucked up the logo.");
-					
+					if (c != '*') continue;
 					LogoEffectRandomizer logoeffectrandomizer = this.logoEffects[x][y];
 					float position = (float) (logoeffectrandomizer.lastTickPosition +
 						((logoeffectrandomizer.position - logoeffectrandomizer.lastTickPosition) * (double) partialTicks));
@@ -204,6 +192,16 @@ public class TitleScreenMixin extends Screen
 					}
 					GL11.glTranslatef(x, y, position);
 					GL11.glScalef(scale, scale, scale);
+					if (c == '*')
+					{
+						switch (pass)
+						{
+						case 0:
+							draw(textBufferDark);
+						case 1:
+							draw(textBufferLight);
+						}
+					}
 					GL11.glPopMatrix();
 				}
 			}
