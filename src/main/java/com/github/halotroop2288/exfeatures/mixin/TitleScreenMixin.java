@@ -40,21 +40,12 @@ import net.minecraft.world.level.LevelInfo;
 @Mixin(TitleScreen.class)
 public class TitleScreenMixin extends Screen
 {
-	// @formatter:off
-	private static String[] MINECRAFT_LOGO =
-	{
-		" *   * * *   * *** *** *** *** *** ***",
-		" ** ** * **  * *   *   * * * * *    * ",
-		" * * * * * * * **  *   **  *** **   * ",
-		" *   * * *  ** *   *   * * * * *    * ",
-		" *   * * *   * *** *** * * * * *    * "
-	};// @formatter:on
+	private static String[] MINECRAFT_LOGO;
 	
-	private static final ItemStack BRUSH_TEXT = new ItemStack(Blocks.STONE);
-	private static final char CHAR_TEXT = '*';
+	private static char CHAR_TEXT;
 	private LogoEffectRandomizer[][] logoEffects;
-	private static final MatrixStack.Entry MATRIX_STACK_ENTRY = new MatrixStack().peek();
-	private static final int MISSING_COLOUR = 0xF000F0;
+	private static MatrixStack.Entry MATRIX_STACK_ENTRY;
+	private static int MISSING_COLOUR;
 
     private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferDark;
     private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferLight;
@@ -67,7 +58,23 @@ public class TitleScreenMixin extends Screen
 
 	@Inject(at = @At("HEAD"), method = "init()V")
 	private void init(CallbackInfo info)
-	{ System.out.println("Successfully injected the Title Screen."); }
+	{
+		System.out.println("Defining variables.");
+		MISSING_COLOUR = 0xF000F0;
+		MATRIX_STACK_ENTRY = new MatrixStack().peek();
+		CHAR_TEXT = '*';
+		textBufferLight = bakeBlock(new ItemStack(Blocks.STONE), 1);
+		textBufferDark = bakeBlock(new ItemStack(Blocks.STONE), 0);
+		MINECRAFT_LOGO = new String[]
+		{// @formatter:off
+			" *   * * *   * *** *** *** *** *** ***",
+			" ** ** * **  * *   *   * * * * *    * ",
+			" * * * * * * * **  *   **  *** **   * ",
+			" *   * * *  ** *   *   * * * * *    * ",
+			" *   * * *   * *** *** * * * * *    * "
+		};// @formatter:on
+		System.out.println("Variables set.");
+	}
 
 	@Inject(at = @At("TAIL"), method = "tick()V")
 	public void tick(CallbackInfo info)
@@ -127,9 +134,6 @@ public class TitleScreenMixin extends Screen
 				for (int j = 0; j < this.logoEffects[i].length; j++)
 				{ this.logoEffects[i][j] = new LogoEffectRandomizer(random, i, j); }
 			}
-			System.out.println("Defining textBuffers");
-			textBufferLight = bakeBlock(BRUSH_TEXT, 1);
-			textBufferDark = bakeBlock(BRUSH_TEXT, 0);
 		}
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glPushMatrix();
