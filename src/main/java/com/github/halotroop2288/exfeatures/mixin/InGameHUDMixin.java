@@ -11,6 +11,7 @@ import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.hud.InGameHud;
+import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -36,27 +37,27 @@ public class InGameHUDMixin extends DrawableHelper
 		if (!this.client.options.debugEnabled)
 		{
 			this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
-			if ((this.client.player.isSprinting() || this.client.player.isFallFlying() || this.client.player.isSneaking()
-				|| this.player.isClimbing() || this.client.player.isSwimming() || this.client.player.abilities.flying)
-				&& this.client.options.perspective == 0 && !this.client.player.isInvisible() && MinecraftClient.isHudEnabled()
-				&& (currentScreen == null /*|| currentScreen instanceof [F3+ESC Screen]*/))
-				drawPlayerPreview(25, 50, 20);
+			if ((this.client.player.isSprinting() || this.player.isFallFlying() || this.player.isSneaking()
+				|| this.player.isClimbing() || this.player.isSwimming() || this.player.abilities.flying)
+				&& this.client.options.perspective == 0 && !this.player.isInvisible() && MinecraftClient.isHudEnabled() && currentScreen == null)
+					drawPlayerPreview(25, 50, 20);
+			else if	(currentScreen instanceof GameMenuScreen)
+				if (((GameMenuScreen)(currentScreen)).isPauseScreen())
+						drawPlayerPreview(25, 50, 20.0F);
 		}
 	}
 
-	public void drawPlayerPreview(int x, int y, int size)
+	public void drawPlayerPreview(int x, int y, float size) // TODO: Limit yaw rotation to 180 degrees
 	{
-		float mouseY = -this.client.player.pitch;
-		LivingEntity entity = this.client.player;
-		float g = (float) Math.atan((double) (mouseY / 40.0F));
+		LivingEntity entity = this.player;
 		RenderSystem.pushMatrix();
 		RenderSystem.translatef((float) x, (float) y, 1050.0F);
 		RenderSystem.scalef(1.0F, 1.0F, -1.0F);
 		MatrixStack matrixStack = new MatrixStack();
 		matrixStack.translate(0.0D, 0.0D, 1000.0D);
-		matrixStack.scale((float) size, (float) size, (float) size);
+		matrixStack.scale(size, size, size);
 		Quaternion quaternion = Vector3f.POSITIVE_Z.getDegreesQuaternion(180.0F);
-		Quaternion quaternion2 = Vector3f.POSITIVE_X.getDegreesQuaternion(g * 20.0F);
+		Quaternion quaternion2 = Vector3f.POSITIVE_X.getDegreesQuaternion(0);
 		quaternion.hamiltonProduct(quaternion2);
 		matrixStack.multiply(quaternion);
 		EntityRenderDispatcher entityRenderDispatcher = MinecraftClient.getInstance().getEntityRenderManager();
