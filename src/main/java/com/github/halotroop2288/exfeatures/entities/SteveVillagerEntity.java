@@ -13,7 +13,7 @@ public class SteveVillagerEntity extends VillagerEntity
 {
 	public SteveVillagerEntity(EntityType<SteveVillagerEntity> entityType, World world)
 	{ super(entityType, world); }
-	
+
 	@Override
 	protected SoundEvent getAmbientSound()
 	{

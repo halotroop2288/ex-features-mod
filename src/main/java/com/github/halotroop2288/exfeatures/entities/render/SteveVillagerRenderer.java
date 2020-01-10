@@ -9,15 +9,10 @@ import net.minecraft.util.Identifier;
 
 public class SteveVillagerRenderer extends MobEntityRenderer<SteveVillagerEntity, SteveVillagerModel>
 {
-
 	public SteveVillagerRenderer(EntityRenderDispatcher renderManager, SteveVillagerModel model, float shadowSize)
-	{
-		super(renderManager, model, shadowSize);
-	}
+	{ super(renderManager, model, shadowSize); }
 
 	@Override
 	public Identifier getTexture(SteveVillagerEntity entity)
-	{
-		return new Identifier("exfeatures", "textures/entity/villager/steve.png");
-	}
+	{ return new Identifier("exfeatures", "textures/entity/villager/steve.png"); }
 }

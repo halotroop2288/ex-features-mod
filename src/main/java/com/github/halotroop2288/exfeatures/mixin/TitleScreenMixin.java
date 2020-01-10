@@ -83,11 +83,11 @@ public class TitleScreenMixin extends Screen
 	public void drawMenuButton(CallbackInfo info)
 	{
 		// Disabled for being broken. @formatter off
-//		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
-//		{
-//			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
-//				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
-//		}));
+		//		this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 48 + 24 * 3, 200, 20, I18n.translate("menu.playtutorial"), buttonwidget ->
+		//		{
+		//			this.minecraft.startIntegratedServer("Tutorial_World", "Tutorial_World",
+		//				new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+		//		}));
 		// @formatter on
 	}
 
@@ -143,7 +143,7 @@ public class TitleScreenMixin extends Screen
 	}
 
 	private void drawLogo(float partialTicks)
-	{		
+	{
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glPushMatrix();
 		GL11.glLoadIdentity();

@@ -12,8 +12,9 @@ import net.minecraft.client.gui.screen.ingame.InventoryScreen;
 @Mixin(InventoryScreen.class)
 public class InventoryScreenMixin
 {
-	@Shadow MinecraftClient client;
-	
+	@Shadow
+	MinecraftClient client;
+
 	@Inject(at = @At("HEAD"), method = "init")
 	private void init(CallbackInfo info)
 	{ System.out.println("Successfully injected the Inventory Screen."); }

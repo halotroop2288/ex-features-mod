@@ -28,7 +28,7 @@ public class InGameHUDMixin extends DrawableHelper
 	private MinecraftClient client;
 	private Screen currentScreen;
 	private PlayerEntity player;
-	
+
 	@Inject(at = @At("TAIL"), method = "render", remap = false)
 	public void render(CallbackInfo info)
 	{
@@ -40,10 +40,10 @@ public class InGameHUDMixin extends DrawableHelper
 			if ((this.client.player.isSprinting() || this.player.isFallFlying() || this.player.isSneaking()
 				|| this.player.isClimbing() || this.player.isSwimming() || this.player.abilities.flying)
 				&& this.client.options.perspective == 0 && !this.player.isInvisible() && MinecraftClient.isHudEnabled() && currentScreen == null)
-					drawPlayerPreview(25, 50, 20);
-			else if	(currentScreen instanceof GameMenuScreen)
-				if (((GameMenuScreen)(currentScreen)).isPauseScreen())
-						drawPlayerPreview(25, 50, 20.0F);
+				drawPlayerPreview(25, 50, 20);
+			else if (currentScreen instanceof GameMenuScreen)
+				if (((GameMenuScreen) (currentScreen)).isPauseScreen())
+					drawPlayerPreview(25, 50, 20.0F);
 		}
 	}
 

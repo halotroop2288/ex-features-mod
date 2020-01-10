@@ -19,8 +19,8 @@ public class ExFeatures implements ModInitializer
 {
 	public static final SpawnEntry GIANT_ZOMBIE_SPAWN = new SpawnEntry(EntityType.GIANT, 1, 0, 2);
 	public static final SpawnEntry ZOMBIE_HORSE_SPAWN = new SpawnEntry(EntityType.ZOMBIE_HORSE, 2, 0, 5);
-	public static final EntityType<SteveVillagerEntity> STEVE_VILLAGER =
-		FabricEntityTypeBuilder.create(EntityCategory.AMBIENT, SteveVillagerEntity::new).size(EntityDimensions.fixed(1, 2)).build();
+	public static final EntityType<SteveVillagerEntity> STEVE_VILLAGER = FabricEntityTypeBuilder.create(EntityCategory.AMBIENT, SteveVillagerEntity::new)
+		.size(EntityDimensions.fixed(1, 2)).build();
 
 	@Override
 	public void onInitialize()
