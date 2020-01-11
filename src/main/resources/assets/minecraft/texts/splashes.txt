@@ -80,7 +80,7 @@ Cow Tools!
 Create!
 Cruising streets for gold!
 Cubism!
-Cześć Polska!
+CzeÅ›Ä‡ Polska!
 DRR! DRR! DRR!
 Do it all, everything!
 Do not distribute!
@@ -95,7 +95,7 @@ Down with O.P.P.!
 Dramatic lighting!
 Dungeon!
 DungeonQuest is unfair!
-Déjà vu!
+DÃ©jÃ  vu!
 Endless!
 Engage!
 Enhanced!
@@ -119,7 +119,7 @@ Fnord!
 Follow the train, CJ!
 Freaky!
 Free dental!
-From the streets of Södermalm!
+From the streets of SÃ¶dermalm!
 Full of stars!
 Funk soul brother!
 GNU Terry Pratchett
@@ -170,7 +170,7 @@ It's a game!
 It's finished!
 It's groundbreaking!
 It's here!
-Jag känner en bot!
+Jag kÃ¤nner en bot!
 Jason! Jason! Jason!
 Javalicious edition
 Jeb has amazing hair!
@@ -191,6 +191,7 @@ Lennart lennart = new Lennart();
 Less addictive than TV Tropes!
 Let our battle's begin!
 Let's dance!
+Let's danec!
 Leveraging synergy!
 Lewd with two dudes with food!
 Limited edition!
@@ -228,7 +229,7 @@ Not linear!
 Not on steam!
 Miku <3 u!
 Now in 3D!
-Now supports åäö!
+Now supports Ã¥Ã¤Ã¶!
 Now with difficulty!
 OICU812!
 Octagonal!
@@ -363,10 +364,10 @@ missingno
 sqrt(-1) love you!
 umop-apisdn!
 www.kant.com
-§1C§2o§3l§4o§5r§6m§7a§8t§9i§ac
-§kFUNKY LOL
-Γεια σου ελλάδα!
-Привет Россия!
-你好中国！
-日本ハロー！
-한국 안녕하세요!
+Â§1CÂ§2oÂ§3lÂ§4oÂ§5rÂ§6mÂ§7aÂ§8tÂ§9iÂ§ac
+Â§kFUNKY LOL
+Î“ÎµÎ¹Î± ÏƒÎ¿Ï… ÎµÎ»Î»Î¬Î´Î±!
+ÐŸÑ€Ð¸Ð²ÐµÑ‚ Ð Ð¾Ñ�Ñ�Ð¸Ñ�!
+ä½ å¥½ä¸­å›½ï¼�
+æ—¥æœ¬ãƒ�ãƒ­ãƒ¼ï¼�
+í•œêµ­ ì•ˆë…•í•˜ì„¸ìš”!
