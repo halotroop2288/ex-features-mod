@@ -7,7 +7,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version
+version = "${mod_version}"
 group = project.maven_group
 
 minecraft {
@@ -15,6 +15,7 @@ minecraft {
 
 repositories {
 	mavenLocal()
+	mavenCentral()
 }
 
 dependencies {
@@ -24,9 +25,11 @@ dependencies {
 	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	include "ambos:indev-world-gen:0.1.1"
+//	include "ambos:indev-world-gen:${indev_wg_version}"
+//	modImplementation "ambos:indev-world-gen:${indev_wg_version}"
+	modRuntime "io.github.prospector:modmenu:${modmenu_version}"
 }
 
 processResources {
@@ -76,5 +79,6 @@ publishing {
 	// select the repositories you want to publish to
 	repositories {
 		mavenLocal()
+		mavenCentral()
 	}
 }

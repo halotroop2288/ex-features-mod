@@ -6,7 +6,6 @@
   ],
   "client": [
     "WolfEntityMixin",
-    "TitleScreenMixin",
     "InGameHudMixin"
   ],
   "injectors": {

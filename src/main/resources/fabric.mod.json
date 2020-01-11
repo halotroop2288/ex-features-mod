@@ -35,6 +35,8 @@
     "minecraft": "1.15.x"
   },
   "suggests": {
-    "flamingo": "*"
+    "flamingo": "*",
+    "modmenu": "*",
+    "indevworldgen": "0.1.1"
   }
 }
