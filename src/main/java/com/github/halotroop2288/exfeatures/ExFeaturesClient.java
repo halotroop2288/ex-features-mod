@@ -8,7 +8,7 @@ public class ExFeaturesClient implements ClientModInitializer
 {
 	@Override
 	public void onInitializeClient()
-	{
+	{ // @formatter:off
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
 		ItemAndBlockRegistries.CYAN_FLOWER,
 		ItemAndBlockRegistries.PAEONIA,
