@@ -1,7 +1,6 @@
 package com.github.halotroop2288.exfeatures.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
@@ -22,14 +21,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Quaternion;
 
 @Mixin(InGameHud.class)
-public class InGameHUDMixin extends DrawableHelper
+public class InGameHudMixin extends DrawableHelper
 {
-	@Shadow
-	private MinecraftClient client;
+	private MinecraftClient client = MinecraftClient.getInstance();
 	private Screen currentScreen;
 	private PlayerEntity player;
 
-	@Inject(at = @At("TAIL"), method = "render", remap = false)
+	@Inject(at = @At("TAIL"), method = "render")
 	public void render(CallbackInfo info)
 	{
 		this.player = this.client.player;
