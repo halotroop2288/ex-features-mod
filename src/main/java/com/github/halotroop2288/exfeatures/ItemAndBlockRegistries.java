@@ -1,12 +1,10 @@
 package com.github.halotroop2288.exfeatures;
 
 import com.github.halotroop2288.exfeatures.blocks.CryingObsidianBlock;
+import com.github.halotroop2288.exfeatures.blocks.UnstableTNTBlock;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerBlock;
-import net.minecraft.block.OreBlock;
+import net.minecraft.block.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
@@ -24,15 +22,17 @@ public class ItemAndBlockRegistries
 	public static Item PAEONIA_ITEM = new BlockItem(PAEONIA, new Item.Settings().group(ItemGroup.DECORATIONS));
 	public static Block ROSE = new FlowerBlock(StatusEffects.INSTANT_HEALTH, 0, FabricBlockSettings.copy(Blocks.POPPY).build());
 	public static Item ROSE_ITEM = new BlockItem(ROSE, new Item.Settings().group(ItemGroup.DECORATIONS));
+	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
+	public static Item UNSTABLE_TNT_ITEM = new BlockItem(UNSTABLE_TNT, new Item.Settings().group(ItemGroup.REDSTONE));
 	/* Platform exclusive blocks */
 	public static Block CYAN_FLOWER = new FlowerBlock(StatusEffects.INSTANT_HEALTH, 0, FabricBlockSettings.copy(Blocks.POPPY).build());
 	public static Item CYAN_FLOWER_ITEM = new BlockItem(CYAN_FLOWER, new Item.Settings().group(ItemGroup.DECORATIONS));
 	public static Block GLOWING_OBSIDIAN = new Block(Block.Settings.copy(Blocks.OBSIDIAN))
 	{
-		public int getLuminance(net.minecraft.block.BlockState state)
+		public int getLuminance(BlockState state)
 		{ return 9; }
 
-		public boolean hasEmissiveLighting(net.minecraft.block.BlockState state)
+		public boolean hasEmissiveLighting(BlockState state)
 		{ return true; }
 	};
 	public static Item GLOWING_OBSIDIAN_ITEM = new BlockItem(GLOWING_OBSIDIAN, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
@@ -62,14 +62,22 @@ public class ItemAndBlockRegistries
 		registerBlock("crying_obsidian", CRYING_OBSIDIAN);
 		registerItem("crying_obsidian", CRYING_OBSIDIAN_ITEM);
 		System.out.println("Crying Obsidian - check.");
+		
 		System.out.println("Removed blocks re-added.");
+		
 		registerBlock("cyan_flower", CYAN_FLOWER);
 		registerItem("cyan_flower", CYAN_FLOWER_ITEM);
 		System.out.println("Cyan Flower - check.");
 		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
 		registerItem("glowing_obsidian", GLOWING_OBSIDIAN_ITEM);
 		System.out.println("Glowing Obsidian - check.");
+		
 		System.out.println("Other-platform-exclusive blocks added.");
+		
+		registerBlock("unstable_tnt", UNSTABLE_TNT);
+		System.out.println("Unstable TNT - check");
+		
+		System.out.println("Unused blocks added.");
 	}
 
 	public static void registerItems()
@@ -83,7 +91,10 @@ public class ItemAndBlockRegistries
 		registerItem("studded_boots", STUDDED_BOOTS);
 		registerItem("plate_helmet", PLATE_HELMET);
 		registerItem("plate_chestplate", PLATE_CHESTPLATE);
+		
 		System.out.println("Removed items re-added.");
+		
+		registerItem("unstable_tnt", UNSTABLE_TNT_ITEM);
 	}
 
 	private static void registerBlock(String id, Block block)
