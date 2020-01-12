@@ -14,11 +14,8 @@ import net.minecraft.util.registry.Registry;
 public class BlockRegistry
 {
 	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
-	public static Item UNSTABLE_TNT_ITEM = new BlockItem(UNSTABLE_TNT, new Item.Settings().group(ItemGroup.REDSTONE));
 	public static Block RUBY_ORE = new OreBlock(FabricBlockSettings.copy(Blocks.EMERALD_ORE).build());
-	public static Item RUBY_ORE_ITEM = new BlockItem(RUBY_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 	public static Block CRYING_OBSIDIAN = new CryingObsidianBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN).build());
-	public static Item CRYING_OBSIDIAN_ITEM = new BlockItem(CRYING_OBSIDIAN, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 	public static Block GLOWING_OBSIDIAN = new Block(Block.Settings.copy(Blocks.OBSIDIAN))
 	{
 		public int getLuminance(BlockState state)
@@ -27,14 +24,13 @@ public class BlockRegistry
 		public boolean hasEmissiveLighting(BlockState state)
 		{ return true; }
 	};
-	public static Item GLOWING_OBSIDIAN_ITEM = new BlockItem(GLOWING_OBSIDIAN, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 	
 	public static void registerBlocks()
 	{
-		registerBlock("ruby_ore", RUBY_ORE, RUBY_ORE_ITEM);
-		registerBlock("crying_obsidian", CRYING_OBSIDIAN, CRYING_OBSIDIAN_ITEM);
-		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN, GLOWING_OBSIDIAN_ITEM);
-		registerBlock("unstable_tnt", UNSTABLE_TNT, UNSTABLE_TNT_ITEM);
+		registerBlock("ruby_ore", RUBY_ORE, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("crying_obsidian", CRYING_OBSIDIAN, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN, ItemGroup.BUILDING_BLOCKS);
+		registerBlock("unstable_tnt", UNSTABLE_TNT, ItemGroup.REDSTONE);
 		
 		SlabRegistry.registerSlabs();
 		FlowerRegistry.registerFlowers();
@@ -44,5 +40,11 @@ public class BlockRegistry
 	{
 		Registry.register(Registry.BLOCK, new Identifier("exfeatures", id), block);
 		ItemRegistry.registerItem(id, blockItem);
+	}
+
+	public static void registerBlock(String id, Block block, ItemGroup group)
+	{
+		Item blockItem = new BlockItem(block, new Item.Settings().group(group));
+		registerBlock(id, block, blockItem);
 	}
 }
