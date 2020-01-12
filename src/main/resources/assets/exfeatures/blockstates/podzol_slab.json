@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "exfeatures:block/podzol_slab" },
+        "type=top": { "model": "exfeatures:block/podzol_slab_top" },
+        "type=double": { "model": "minecraft:block/podzol" }
+    }
+}
