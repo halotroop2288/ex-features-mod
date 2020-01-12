@@ -3,6 +3,8 @@ package com.github.halotroop2288.exfeatures;
 import com.github.halotroop2288.exfeatures.entities.SteveVillagerEntity;
 import com.github.halotroop2288.exfeatures.entities.render.SteveVillagerRenderer;
 import com.github.halotroop2288.exfeatures.entities.render.model.SteveVillagerModel;
+import com.github.halotroop2288.exfeatures.registries.BlockRegistry;
+import com.github.halotroop2288.exfeatures.registries.ItemRegistry;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
@@ -33,8 +35,8 @@ public class ExFeatures implements ModInitializer
 		Registry.register(Registry.ENTITY_TYPE, new Identifier("exfeatures", "steve_villager"), STEVE_VILLAGER);
 		EntityRendererRegistry.INSTANCE.register(STEVE_VILLAGER,
 			(entityRenderDispatcher, context) -> new SteveVillagerRenderer(entityRenderDispatcher, new SteveVillagerModel(1, 64, 64), 1));
-		ItemAndBlockRegistries.registerBlocks();
-		ItemAndBlockRegistries.registerItems();
+		BlockRegistry.registerBlocks();
+		ItemRegistry.registerItems();
 		Biomes.DESERT.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
 		Biomes.PLAINS.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
 		Biomes.DEFAULT.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
