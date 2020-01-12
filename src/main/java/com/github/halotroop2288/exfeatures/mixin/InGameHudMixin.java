@@ -1,7 +1,8 @@
 package com.github.halotroop2288.exfeatures.mixin;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.*;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -34,7 +35,6 @@ public class InGameHudMixin extends DrawableHelper
 		this.currentScreen = this.client.currentScreen;
 		if (!this.client.options.debugEnabled)
 		{
-			this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
 			if ((this.client.player.isSprinting() || this.player.isFallFlying() || this.player.isSneaking()
 				|| this.player.isClimbing() || this.player.isSwimming() || this.player.abilities.flying)
 				&& this.client.options.perspective == 0 && !this.player.isInvisible() && MinecraftClient.isHudEnabled() && currentScreen == null)
@@ -42,6 +42,7 @@ public class InGameHudMixin extends DrawableHelper
 			else if (currentScreen instanceof GameMenuScreen)
 				if (((GameMenuScreen) (currentScreen)).isPauseScreen())
 					drawPlayerPreview(25, 50, 20.0F);
+			this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
 		}
 	}
 

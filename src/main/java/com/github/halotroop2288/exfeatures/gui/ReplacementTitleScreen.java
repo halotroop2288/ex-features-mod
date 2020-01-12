@@ -104,7 +104,7 @@ public class ReplacementTitleScreen extends TitleScreen
 		}));
 		this.addButton(new ButtonWidget(this.width / 2 - 100, offsetFromTop + 24 * 2, 200, 20, I18n.translate("menu.mods_packs"), (buttonWidget) ->
 		{
-			this.minecraft.openScreen(new ModsNPacksScreen(this));
+			this.minecraft.openScreen(new ModsNPacksScreen(this, this.minecraft.options));
 		}));
 		this.addButton(new ButtonWidget(this.width / 2 - 100, lastRowOffset, 98, 20, I18n.translate("menu.options"), (buttonWidget) ->
 		{
@@ -114,7 +114,7 @@ public class ReplacementTitleScreen extends TitleScreen
 		{
 			this.minecraft.scheduleStop();
 		}));
-		initAccessibilityButtons(lastRowOffset);
+		initAccessibilityButtons(lastRowOffset); // TODO: allow disabling this in mod config
 	}
 
 	private void initAccessibilityButtons(int offset)
