@@ -13,6 +13,10 @@ import net.minecraft.util.registry.Registry;
 
 public class ItemAndBlockRegistries
 {
+	/* Unused blocks */
+	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
+	public static Item UNSTABLE_TNT_ITEM = new BlockItem(UNSTABLE_TNT, new Item.Settings().group(ItemGroup.REDSTONE));
+	
 	/* Removed/Replaced blocks */
 	public static Block RUBY_ORE = new OreBlock(FabricBlockSettings.copy(Blocks.EMERALD_ORE).build());
 	public static Item RUBY_ORE_ITEM = new BlockItem(RUBY_ORE, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
@@ -22,8 +26,10 @@ public class ItemAndBlockRegistries
 	public static Item PAEONIA_ITEM = new BlockItem(PAEONIA, new Item.Settings().group(ItemGroup.DECORATIONS));
 	public static Block ROSE = new FlowerBlock(StatusEffects.INSTANT_HEALTH, 0, FabricBlockSettings.copy(Blocks.POPPY).build());
 	public static Item ROSE_ITEM = new BlockItem(ROSE, new Item.Settings().group(ItemGroup.DECORATIONS));
-	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
-	public static Item UNSTABLE_TNT_ITEM = new BlockItem(UNSTABLE_TNT, new Item.Settings().group(ItemGroup.REDSTONE));
+	public static Block DIRT_SLAB = new SlabBlock(Block.Settings.copy(Blocks.DIRT));
+	public static Item DIRT_SLAB_ITEM = new BlockItem(DIRT_SLAB, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
+	public static Block GRASS_SLAB = new SlabBlock(Block.Settings.copy(Blocks.GRASS_BLOCK));
+	public static Item GRASS_SLAB_ITEM = new BlockItem(GRASS_SLAB, new Item.Settings().group(ItemGroup.BUILDING_BLOCKS));
 	/* Platform exclusive blocks */
 	public static Block CYAN_FLOWER = new FlowerBlock(StatusEffects.INSTANT_HEALTH, 0, FabricBlockSettings.copy(Blocks.POPPY).build());
 	public static Item CYAN_FLOWER_ITEM = new BlockItem(CYAN_FLOWER, new Item.Settings().group(ItemGroup.DECORATIONS));
@@ -47,9 +53,10 @@ public class ItemAndBlockRegistries
 	public static ArmorItem PLATE_HELMET = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.COMBAT));
 	public static ArmorItem PLATE_CHESTPLATE = new ArmorItem(ArmorMaterials.IRON, EquipmentSlot.CHEST, new Item.Settings().group(ItemGroup.COMBAT));
 	// TODO: Make studded weaker than leather by a little bit, and plate stronger than iron but less than diamond
-
+	
 	public static void registerBlocks()
 	{
+		System.out.println("Readding removed blocks...");
 		registerBlock("ruby_ore", RUBY_ORE);
 		registerItem("ruby_ore", RUBY_ORE_ITEM);
 		System.out.println("Ruby - check.");
@@ -62,8 +69,12 @@ public class ItemAndBlockRegistries
 		registerBlock("crying_obsidian", CRYING_OBSIDIAN);
 		registerItem("crying_obsidian", CRYING_OBSIDIAN_ITEM);
 		System.out.println("Crying Obsidian - check.");
-		
-		System.out.println("Removed blocks re-added.");
+		registerBlock("dirt_slab", DIRT_SLAB);
+		registerItem("dirt_slab", DIRT_SLAB_ITEM);
+		registerBlock("grass_slab", GRASS_SLAB);
+		registerItem("grass_slab", GRASS_SLAB_ITEM);
+
+		System.out.println("Adding other platform-exclusive blocks...");
 		
 		registerBlock("cyan_flower", CYAN_FLOWER);
 		registerItem("cyan_flower", CYAN_FLOWER_ITEM);
@@ -71,13 +82,13 @@ public class ItemAndBlockRegistries
 		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
 		registerItem("glowing_obsidian", GLOWING_OBSIDIAN_ITEM);
 		System.out.println("Glowing Obsidian - check.");
-		
-		System.out.println("Other-platform-exclusive blocks added.");
+
+		System.out.println("Re-adding unused blocks...");
 		
 		registerBlock("unstable_tnt", UNSTABLE_TNT);
+		registerItem("unstable_tnt", UNSTABLE_TNT_ITEM);
 		System.out.println("Unstable TNT - check");
 		
-		System.out.println("Unused blocks added.");
 	}
 
 	public static void registerItems()
@@ -93,8 +104,6 @@ public class ItemAndBlockRegistries
 		registerItem("plate_chestplate", PLATE_CHESTPLATE);
 		
 		System.out.println("Removed items re-added.");
-		
-		registerItem("unstable_tnt", UNSTABLE_TNT_ITEM);
 	}
 
 	private static void registerBlock(String id, Block block)

@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "exfeatures:block/grass_slab" },
+        "type=top": { "model": "exfeatures:block/grass_slab_top" },
+        "type=double": { "model": "minecraft:block/grass_block" }
+    }
+}
