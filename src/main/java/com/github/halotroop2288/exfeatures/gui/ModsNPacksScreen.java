@@ -15,7 +15,7 @@ public class ModsNPacksScreen extends Screen
 
 	public ModsNPacksScreen(Screen parent)
 	{
-		super(new TranslatableText("narrator.menu.modspacks"));
+		super(new TranslatableText("menu.mods_packs.title"));
 		this.parent = parent;
 	}
 
