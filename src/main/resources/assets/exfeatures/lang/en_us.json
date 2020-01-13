@@ -17,9 +17,14 @@
 	"block.exfeatures.unstable_tnt": "Unstable TNT",
 	"block.exfeatures.dirt_slab": "Dirt Slab",
 	"block.exfeatures.grass_slab": "Grass Slab",
+	"block.exfeatures.coarse_dirt_slab": "Coarse Dirt Slab",
+	"block.exfeatures.mycelium_slab": "Mycelium Slab",
+	"block.exfeatures.podzol_slab": "Podzol Slab",
 	"narrator.screen.locked_chest": "Steve Co. Supply Crate",
+	"narrator.menu.mods_packs": "Mods and Resource Packs",
 	"menu.locked_chest.description": "You need a Steve Co. Supply Crate Key to open this. You can pick one up at the Minecraft store.",
 	"menu.locked_chest.shop": "Go to store",
 	"menu.locked_chest.cancel": "Not now",
+	"menu.modspacks": "Mods and Resource Packs",
 	"menu.playtutorial": "Play Tutorial Level"
 }
