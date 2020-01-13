@@ -27,9 +27,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-//	include "ambos:indev-world-gen:${indev_wg_version}"
-//	modImplementation "ambos:indev-world-gen:${indev_wg_version}"
-	modRuntime "io.github.prospector:modmenu:${modmenu_version}"
+	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
 }
 
 processResources {

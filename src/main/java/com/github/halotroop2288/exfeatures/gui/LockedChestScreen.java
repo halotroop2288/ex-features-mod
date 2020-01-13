@@ -4,6 +4,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.resource.language.I18n;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -15,7 +16,7 @@ public class LockedChestScreen extends Screen
 	private static final Identifier TEXTURE = new Identifier("exfeatures", "textures/gui/container/locked_chest.png");
 
 	public LockedChestScreen()
-	{ super(new TranslatableText("narator.screen.locked_chest")); }
+	{ super(new TranslatableText("menu.locked_chest.title")); }
 
 	@Override
 	protected void init() // TODO: position the buttons correctly
@@ -34,6 +35,13 @@ public class LockedChestScreen extends Screen
 				this.minecraft.openScreen(this);
 			}, link, true));
 		}));
+	}
+	
+	@Override
+	public void render(int mouseX, int mouseY, float delta)
+	{
+		super.render(mouseX, mouseY, delta);
+		drawCenteredString(this.client.textRenderer, I18n.translate("menu.locked_chest.description"), this.width / 2, this.height / 2, 0xFFFFFF);
 	}
 
 	public static Identifier getTexture()

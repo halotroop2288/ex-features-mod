@@ -10,6 +10,8 @@
 	"item.exfeatures.small_chalkboard": "Slate",
 	"item.exfeatures.medium_chalkboard": "Poster",
 	"item.exfeatures.large_chalkboard": "Board",
+	"item.exfeatures.pigman_spawn_egg": "Pigman Spawn Egg",
+	"item.exfeatures.steve_villager_spawn_egg": "Steve Villager Spawn Egg",
 	"block.exfeatures.ruby_ore": "Ruby Ore",
 	"block.exfeatures.rose": "Rose",
 	"block.exfeatures.paeonia": "Paeonia",
@@ -20,11 +22,14 @@
 	"block.exfeatures.coarse_dirt_slab": "Coarse Dirt Slab",
 	"block.exfeatures.mycelium_slab": "Mycelium Slab",
 	"block.exfeatures.podzol_slab": "Podzol Slab",
-	"narrator.screen.locked_chest": "Steve Co. Supply Crate",
-	"narrator.menu.mods_packs": "Mods and Resource Packs",
+	"entity.exfeatures.pigman": "Pigman",
+	"entity.exfeatures.steve_villager": "Steve Villager",
+	"menu.mods_packs.title": "Mods and Resource Packs",
+	"menu.locked_chest.title": "Steve Co. Supply Crate",
 	"menu.locked_chest.description": "You need a Steve Co. Supply Crate Key to open this. You can pick one up at the Minecraft store.",
 	"menu.locked_chest.shop": "Go to store",
 	"menu.locked_chest.cancel": "Not now",
 	"menu.modspacks": "Mods and Resource Packs",
-	"menu.playtutorial": "Play Tutorial Level"
+	"menu.playtutorial": "Play Tutorial Level",
+	"mob.wolf.howl": "Wolf howls"
 }
