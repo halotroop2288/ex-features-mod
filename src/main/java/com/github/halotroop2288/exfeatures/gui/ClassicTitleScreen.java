@@ -139,7 +139,7 @@ public class ClassicTitleScreen extends Screen
 				this.minecraft.openScreen(new ModsNPacksScreen(this));
 			}));
 		else
-			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("menu.resource_packs"), (buttonWidget) ->
+			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("options.resourcepack"), (buttonWidget) ->
 			{
 				this.minecraft.openScreen(new ResourcePackOptionsScreen(this, this.minecraft.options));
 			}));
