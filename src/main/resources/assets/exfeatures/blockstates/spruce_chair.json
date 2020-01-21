@@ -1,0 +1,8 @@
+{
+	 "variants": {
+		  "facing=north": { "model": "exfeatures:block/spruce_chair" },
+		  "facing=south": { "model": "exfeatures:block/spruce_chair", "y": 180 },
+		  "facing=west":  { "model": "exfeatures:block/spruce_chair", "y": 270 },
+		  "facing=east":  { "model": "exfeatures:block/spruce_chair", "y": 90 }
+	 }
+}

@@ -1,0 +1,6 @@
+{
+	"parent":"exfeatures:block/chair",
+	"textures":{
+		"texture":"minecraft:block/dark_oak_planks"
+	}
+}

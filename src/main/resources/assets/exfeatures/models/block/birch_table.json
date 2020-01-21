@@ -1,0 +1,6 @@
+{
+	"parent":"exfeatures:block/table",
+	"textures":{
+		"texture":"minecraft:block/birch_planks"
+	}
+}
