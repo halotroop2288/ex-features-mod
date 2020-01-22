@@ -39,6 +39,6 @@
   "suggests": {
     "flamingo": "*",
     "modmenu": "*",
-    "indevworldgen": "0.1.1"
+    "indevworldgen": "*"
   }
 }
