@@ -13,7 +13,6 @@ import net.fabricmc.api.ModInitializer;
  * http://www.wtfpl.net/ for more details. */
 public class ExFeatures implements ModInitializer
 {
-
 	@Override
 	public void onInitialize()
 	{

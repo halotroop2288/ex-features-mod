@@ -1,7 +1,7 @@
 package com.github.halotroop2288.exfeatures;
 
-import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
 import com.github.halotroop2288.exfeatures.registries.blocks.FlowerRegistry;
+import com.github.halotroop2288.exfeatures.registries.client.RendererRegistry;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -16,6 +16,6 @@ public class ExFeaturesClient implements ClientModInitializer
 		FlowerRegistry.CYAN_FLOWER,
 		FlowerRegistry.PAEONIA,
 		FlowerRegistry.ROSE);
-		EntityRegistry.registerEntityRenderers();
+		RendererRegistry.registerEntityRenderers();
 	}
 }

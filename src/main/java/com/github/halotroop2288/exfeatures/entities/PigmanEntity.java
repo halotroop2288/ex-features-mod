@@ -33,7 +33,7 @@ public class PigmanEntity extends VillagerEntity
 	public void onStruckByLightning(LightningEntity lightning)
 	{
 		ZombiePigmanEntity zombiePigmanEntity = (ZombiePigmanEntity) EntityType.ZOMBIE_PIGMAN.create(this.world);
-		zombiePigmanEntity.setPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, this.pitch);
+		zombiePigmanEntity.updatePositionAndAngles(this.getX(), this.getY(), this.getZ(), this.yaw, this.pitch);
 		zombiePigmanEntity.initialize(this.world, this.world.getLocalDifficulty(new BlockPos(zombiePigmanEntity)),
 			SpawnType.CONVERSION, (EntityData) null, (CompoundTag) null);
 		zombiePigmanEntity.setAiDisabled(this.isAiDisabled());

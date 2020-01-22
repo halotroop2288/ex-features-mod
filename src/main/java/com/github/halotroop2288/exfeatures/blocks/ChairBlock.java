@@ -1,21 +1,14 @@
 package com.github.halotroop2288.exfeatures.blocks;
 
-import com.github.halotroop2288.exfeatures.entities.SeatEntity;
-
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityContext;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.*;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.shape.*;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
 
 public class ChairBlock extends Block implements Waterloggable
 {

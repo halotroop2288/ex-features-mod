@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "exfeatures",
-  "version": "0.2.0",
+  "version": "0.3.0",
 
   "name": "Ex-Features Mod",
   "description": "This mod re-adds features that have been removed from Minecraft JE, and ports over features from other editions of Minecraft that never made it to PC.",
