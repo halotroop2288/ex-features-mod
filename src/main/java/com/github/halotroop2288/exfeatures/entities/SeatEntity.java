@@ -32,7 +32,7 @@ public class SeatEntity extends Entity
 	{
 		this(EntityRegistry.SEAT, world);
 		this.source = source;
-		this.setPosition(source.getX() + 0.5, source.getY() + yOffset, source.getZ() + 0.5);
+		this.setPos(source.getX() + 0.5, source.getY() + yOffset, source.getZ() + 0.5);
 	}
 	
 	@Override
