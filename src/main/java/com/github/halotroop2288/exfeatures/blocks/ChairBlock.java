@@ -1,14 +1,21 @@
 package com.github.halotroop2288.exfeatures.blocks;
 
+import com.github.halotroop2288.exfeatures.entities.SeatEntity;
+
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityContext;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.shape.*;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class ChairBlock extends Block implements Waterloggable
 {
@@ -36,6 +43,12 @@ public class ChairBlock extends Block implements Waterloggable
 		super(settings);
 		this.setDefaultState(this.getStateManager().getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
 	}
+	
+//	@Override
+//	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit)
+//	{
+//		return SeatEntity.create(world, pos, 0.4, player);
+//	}
 
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ePos)
