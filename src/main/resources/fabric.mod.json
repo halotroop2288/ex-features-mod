@@ -23,6 +23,8 @@
     ],
     "client": [
     "com.github.halotroop2288.exfeatures.ExFeaturesClient"
+    ],
+    "server": [
     ]
   },
   "mixins": [
