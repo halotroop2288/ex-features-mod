@@ -1,5 +1,6 @@
 package com.github.halotroop2288.exfeatures.gui;
 
+import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.datafixers.util.Pair;
 
@@ -110,8 +111,11 @@ public class ClassicTitleScreen extends Screen
 		float partialTicks = this.minecraft.getTickDelta();
 		this.renderDirtBackground(0);
 		this.drawLogo(partialTicks);
-        this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE); // TODO: Add config option to disable this
-        blit(this.width / 2 - 137 + 88, 90, 0.0F, 0.0F, 98, 14, 128, 16);
+		if (ExFeatures.config.showJavaEdition())
+		{
+	        this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE);
+	        blit(this.width / 2 - 137 + 88, 90, 0.0F, 0.0F, 98, 14, 128, 16);
+		}
 		this.drawSplashText();
 		this.drawString(this.font, MINECRAFT_VERSION, 2, 2, 0xFF505050);
 		this.drawString(this.font, COPYRIGHT, this.width - this.font.getStringWidth(COPYRIGHT) - 2, this.height - 10, 0xFFFFFFFF);
@@ -143,10 +147,11 @@ public class ClassicTitleScreen extends Screen
 			{
 				this.minecraft.openScreen(new ResourcePackOptionsScreen(this, this.minecraft.options));
 			}));
-		this.addButton(new ButtonWidget(xOffset, row4Offset, 200, 20, I18n.translate("menu.playtutorial"), (buttonWidget) ->
-			{
-				this.minecraft.startIntegratedServer("Tutorial", "Tutorial", new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
-			}));
+		if (ExFeatures.config.showTutorialButton())
+			this.addButton(new ButtonWidget(xOffset, row4Offset, 200, 20, I18n.translate("menu.playtutorial"), (buttonWidget) ->
+				{
+					this.minecraft.startIntegratedServer("Tutorial", "Tutorial", new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+				}));
 		this.addButton(new ButtonWidget(xOffset, lastRowOffset, 98, 20, I18n.translate("menu.options"), (buttonWidget) ->
 		{
 			this.minecraft.openScreen(new SettingsScreen(this, this.minecraft.options));
@@ -155,7 +160,8 @@ public class ClassicTitleScreen extends Screen
 		{
 			this.minecraft.scheduleStop();
 		}));
-		initAccessibilityButtons(lastRowOffset); // TODO: allow disabling this in mod config
+		if (ExFeatures.config.showAccessibilityButtons())
+			initAccessibilityButtons(lastRowOffset);
 	}
 
 	private void initAccessibilityButtons(int offset)

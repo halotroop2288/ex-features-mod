@@ -1,5 +1,8 @@
 package com.github.halotroop2288.exfeatures;
 
+import org.aeonbits.owner.ConfigFactory;
+
+import com.github.halotroop2288.exfeatures.config.ModConfig;
 import com.github.halotroop2288.exfeatures.registries.BlockRegistry;
 import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
 import com.github.halotroop2288.exfeatures.registries.ItemRegistry;
@@ -13,9 +16,11 @@ import net.fabricmc.api.ModInitializer;
  * http://www.wtfpl.net/ for more details. */
 public class ExFeatures implements ModInitializer
 {
+	public static ModConfig config;
 	@Override
 	public void onInitialize()
 	{
+		config = ConfigFactory.create(ModConfig.class);
 		EntityRegistry.registerEntities();
 		EntityRegistry.registerEntitySpawns();
 		BlockRegistry.registerBlocks();

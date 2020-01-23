@@ -41,11 +41,10 @@ dependencies {
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
 	
-	modImplementation("me.sargunvohra.mcmods:autoconfig1u:${autoconfig_version}")
-	include("me.sargunvohra.mcmods:autoconfig1u:${autoconfig_version}")
+	include 'org.aeonbits.owner:owner:1.0.10'
+	implementation 'org.aeonbits.owner:owner:1.0.10'
 }
 
 releasesHub {
