@@ -30,9 +30,6 @@ repositories {
 		name = "CurseForge"
 		url = "https://minecraft.curseforge.com/api/maven"
 	}
-    maven {
-		url = "https://dl.bintray.com/shedaniel/autoconfig1u/"
-	}
 }
 
 dependencies {
@@ -43,8 +40,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
 	
-	include 'org.aeonbits.owner:owner:1.0.10'
-	implementation 'org.aeonbits.owner:owner:1.0.10'
+	include "org.aeonbits.owner:owner:${config_version}"
+	implementation "org.aeonbits.owner:owner:${config_version}"
 }
 
 releasesHub {
@@ -61,7 +58,7 @@ curseforge {
         addGameVersion "1.15-Snapshot"
         mainArtifact(remapJar) {
             displayName = project.archives_base_name + project.version
-            changelog = 'To be filled in. Stay tuned.'
+            changelog = "Happy monday! Changelog to be filled in. Stay tuned. (This happens when I publish from Gradle)"
             releaseType = project.releaseType
         }
     }
@@ -118,7 +115,9 @@ publishing {
 		}
 	}
 	repositories {
-		mavenLocal()
-		mavenCentral()
+		maven {
+		name = "CurseForge"
+		url = "https://minecraft.curseforge.com/api/maven"
+		}
 	}
 }
