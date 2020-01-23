@@ -1,13 +1,15 @@
 plugins {
 	id 'fabric-loom' version '0.2.6-SNAPSHOT'
 	id 'maven-publish'
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id "com.releaseshub.gradle.plugin" version "1.3.1"
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = project.archives_base_name
-version = "${mod_version}"
+archivesBaseName = "${project.archives_base_name}-${project.releaseType}"
+version = project.mod_version
 group = project.maven_group
 
 minecraft {
@@ -16,18 +18,61 @@ minecraft {
 repositories {
 	mavenLocal()
 	mavenCentral()
+	maven {
+		name = "CottonMC"
+		url = "http://server.bbkr.space:8081/artifactory/libs-snapshot"
+	}
+	maven {
+		name = "Fabric"
+		url = "https://maven.fabricmc.net/"
+	}
+	maven {
+		name = "CurseForge"
+		url = "https://minecraft.curseforge.com/api/maven"
+	}
+    maven {
+		url = "https://dl.bintray.com/shedaniel/autoconfig1u/"
+	}
 }
 
 dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
+	
+	modImplementation("me.sargunvohra.mcmods:autoconfig1u:${autoconfig_version}")
+	include("me.sargunvohra.mcmods:autoconfig1u:${autoconfig_version}")
+}
+
+releasesHub {
+    gitHubWriteToken = "e54052e9de7d534f875d9f0c453c2d3654118fd9"
+}
+
+curseforge {
+    apiKey = 'b82c9416-28fe-494d-a7ab-6b7906ecf829'
+    project {
+        id = "357674"
+        addGameVersion "1.15"
+        addGameVersion "1.15.1"
+        addGameVersion "1.15.2"
+        addGameVersion "1.15-Snapshot"
+        mainArtifact(remapJar) {
+            displayName = project.archives_base_name + project.version
+            changelog = 'To be filled in. Stay tuned.'
+            releaseType = project.releaseType
+        }
+    }
+    options {
+        forgeGradleIntegration = false
+    }
+}
+
+afterEvaluate {
+    tasks.curseforge357674.dependsOn remapJar
 }
 
 processResources {
@@ -73,8 +118,6 @@ publishing {
 			}
 		}
 	}
-
-	// select the repositories you want to publish to
 	repositories {
 		mavenLocal()
 		mavenCentral()
