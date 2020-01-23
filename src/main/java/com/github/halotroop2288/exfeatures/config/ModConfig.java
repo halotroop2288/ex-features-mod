@@ -4,16 +4,16 @@ import org.aeonbits.owner.Config;
 
 public interface ModConfig extends Config
 {
-	@Key("title.use.custom")
+	@Key("title.use_custom_title_screen")
 	@DefaultValue("true")
 	public boolean useCustomTitleScreen();
-	@Key("title.show.edition")
+	@Key("title.show_java_edition_logo")
 	@DefaultValue("true")
 	public boolean showJavaEdition();
-	@Key("title.show.tutorial.button")
+	@Key("title.show_unfinisehd_tutorial_button")
 	@DefaultValue("false")
-	public boolean showTutorialButton();
-	@Key("title.show.accessibility.buttons")
+	public boolean showUnfinishedTutorialButton();
+	@Key("title.show_accessibility_buttons")
 	@DefaultValue("false")
 	public boolean showAccessibilityButtons();
 }

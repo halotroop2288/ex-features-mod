@@ -147,7 +147,7 @@ public class ClassicTitleScreen extends Screen
 			{
 				this.minecraft.openScreen(new ResourcePackOptionsScreen(this, this.minecraft.options));
 			}));
-		if (ExFeatures.config.showTutorialButton())
+		if (ExFeatures.config.showUnfinishedTutorialButton())
 			this.addButton(new ButtonWidget(xOffset, row4Offset, 200, 20, I18n.translate("menu.playtutorial"), (buttonWidget) ->
 				{
 					this.minecraft.startIntegratedServer("Tutorial", "Tutorial", new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
