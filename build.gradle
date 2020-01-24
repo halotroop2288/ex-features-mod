@@ -18,10 +18,14 @@ minecraft {
 repositories {
 	mavenLocal()
 	mavenCentral()
-	maven {
-		name = "CottonMC"
-		url = "http://server.bbkr.space:8081/artifactory/libs-snapshot"
-	}
+    maven {
+        name = "CottonMC Releases"
+        url = "http://server.bbkr.space:8081/artifactory/libs-release"
+    }
+    maven {
+        name = "CottonMC Snapshots"
+        url = "http://server.bbkr.space:8081/artifactory/libs-snapshot"
+    }
 	maven {
 		name = "Fabric"
 		url = "https://maven.fabricmc.net/"
@@ -29,6 +33,13 @@ repositories {
 	maven {
 		name = "CurseForge"
 		url = "https://minecraft.curseforge.com/api/maven"
+	}
+	maven {
+		url = "https://jitpack.io"
+	}
+	maven {
+		name = "NerdHubMC"
+		url = "https://maven.abusedmaster.xyz/"
 	}
 }
 
@@ -44,7 +55,7 @@ dependencies {
 	
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
     modImplementation "io.github.cottonmc:LibGui:${libgui_version}"
-	modImplementation "com.github.emilyploszaj:trinkets:v${trinkets_version}"
+	modImplementation "com.github.emilyploszaj:trinkets:${trinkets_version}"
 }
 
 releasesHub {

@@ -136,7 +136,7 @@ public class ClassicTitleScreen extends Screen
 		{
 			this.minecraft.openScreen(new MultiplayerScreen(this));
 		}));
-		if (ExFeatures.isModMenuPresent)
+		if (ExFeatures.useModMenu)
 			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("menu.modspacks"), (buttonWidget) ->
 			{
 				this.minecraft.openScreen(new ModsNPacksScreen(this));

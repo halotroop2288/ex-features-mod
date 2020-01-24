@@ -19,9 +19,9 @@ import net.fabricmc.loader.api.FabricLoader;
 public class ExFeatures implements ModInitializer
 {
 	public static final ModConfig config = ConfigFactory.create(ModConfig.class);
-	public static final boolean isModMenuPresent = FabricLoader.getInstance().isModLoaded("modmenu");
-	public static final boolean isTrinketsPresent = FabricLoader.getInstance().isModLoaded("trinkets");
-	public static final boolean isIndevPresent = FabricLoader.getInstance().isModLoaded("indevworldgen");
+	public static final boolean useModMenu = FabricLoader.getInstance().isModLoaded("modmenu") && config.modmenuEnabled();
+	public static final boolean useTrinkets = FabricLoader.getInstance().isModLoaded("trinkets") && config.trinketsEnabled();
+	public static final boolean useIndev = FabricLoader.getInstance().isModLoaded("indevworldgen") && config.indevEnabled();
 	
 	@Override
 	public void onInitialize()
