@@ -4,7 +4,6 @@ import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.datafixers.util.Pair;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.SharedConstants;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.MinecraftClient;
@@ -137,7 +136,7 @@ public class ClassicTitleScreen extends Screen
 		{
 			this.minecraft.openScreen(new MultiplayerScreen(this));
 		}));
-		if (FabricLoader.getInstance().isModLoaded("modmenu"))
+		if (ExFeatures.isModMenuPresent)
 			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("menu.modspacks"), (buttonWidget) ->
 			{
 				this.minecraft.openScreen(new ModsNPacksScreen(this));

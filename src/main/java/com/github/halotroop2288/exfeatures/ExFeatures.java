@@ -9,6 +9,7 @@ import com.github.halotroop2288.exfeatures.registries.ItemRegistry;
 import com.github.halotroop2288.exfeatures.registries.SoundRegistry;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 
 /* This program is free software. It comes without any warranty, to
  * the extent permitted by applicable law. You can redistribute it
@@ -18,6 +19,9 @@ import net.fabricmc.api.ModInitializer;
 public class ExFeatures implements ModInitializer
 {
 	public static final ModConfig config = ConfigFactory.create(ModConfig.class);
+	public static final boolean isModMenuPresent = FabricLoader.getInstance().isModLoaded("modmenu");
+	public static final boolean isTrinketsPresent = FabricLoader.getInstance().isModLoaded("trinkets");
+	public static final boolean isIndevPresent = FabricLoader.getInstance().isModLoaded("indevworldgen");
 	
 	@Override
 	public void onInitialize()
