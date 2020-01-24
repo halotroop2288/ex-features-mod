@@ -34,12 +34,14 @@
   "depends": {
     "fabricloader": ">=0.7.2",
     "fabric": "*",
-    "minecraft": "1.15.x"
+    "minecraft": "1.15.x",
+    "libgui": ">=1.4.0"
   },
   "suggests": {
     "modmenu": "*",
     "indevworldgen": "*",
     "debrand": "*",
-    "iamverysmart": "*"
+    "iamverysmart": "*",
+    "trinkets": "*"
   }
 }
