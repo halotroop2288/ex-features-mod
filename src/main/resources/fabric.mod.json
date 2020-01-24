@@ -39,6 +39,7 @@
   "suggests": {
     "modmenu": "*",
     "indevworldgen": "*",
-    "debrand": "*"
+    "debrand": "*",
+    "iamverysmart": "*"
   }
 }
