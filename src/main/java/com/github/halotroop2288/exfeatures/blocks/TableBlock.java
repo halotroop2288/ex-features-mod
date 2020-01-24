@@ -19,9 +19,11 @@ public class TableBlock extends Block implements Waterloggable
 {
 	private static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 	private static final VoxelShape TABLE_SHAPE = VoxelShapes.union(
-		Block.createCuboidShape(2.0D, 0.0D, 12.0D, 4.0D, 9.0D, 14.0D),
-		Block.createCuboidShape(12.0D, 0.0D, 2.0D, 14.0D, 9.0D, 4.0D), Block.createCuboidShape(12.0D, 0.0D, 12.0D, 14.0D, 9.0D, 14.0D),
-		Block.createCuboidShape(2.0D, 0.0D, 2.0D, 4.0D, 9.0D, 4.0D), Block.createCuboidShape(2.0D, 9.0D, 2.0D, 14.0D, 11.0D, 14.0D));
+		Block.createCuboidShape(2, 0, 2, 4, 15, 4),
+		Block.createCuboidShape(12, 0, 2, 14, 15, 4),
+		Block.createCuboidShape(12, 0, 12, 14, 15, 14),
+		Block.createCuboidShape(2, 0, 12, 4, 15, 14),
+		Block.createCuboidShape(1, 15, 1, 15, 16, 15));
 
 	public TableBlock(Settings settings)
 	{
