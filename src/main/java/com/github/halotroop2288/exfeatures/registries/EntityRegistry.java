@@ -1,5 +1,6 @@
 package com.github.halotroop2288.exfeatures.registries;
 
+import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.github.halotroop2288.exfeatures.entities.PigmanEntity;
 import com.github.halotroop2288.exfeatures.entities.SeatEntity;
 import com.github.halotroop2288.exfeatures.entities.SteveVillagerEntity;
@@ -25,9 +26,14 @@ public class EntityRegistry
 	
 	public static void registerEntities()
 	{
+		// Optional entities:
+		if (ExFeatures.config.registerEntities())
+		{
+			registerEntity("pigman", PIGMAN);
+			registerEntity("steve_villager", STEVE_VILLAGER);
+		}
+		// These have to be registered:
 		registerEntity("seat", SEAT);
-		registerEntity("pigman", PIGMAN);
-		registerEntity("steve_villager", STEVE_VILLAGER);
 	}
 	
 	private static void registerEntity(String name, EntityType<?> entity)

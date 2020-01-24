@@ -16,4 +16,14 @@ public interface ModConfig extends Config
 	@Key("title.show_accessibility_buttons")
 	@DefaultValue("false")
 	public boolean showAccessibilityButtons();
+	
+	@Key("mod.register_blocks")
+	@DefaultValue("true")
+	public boolean registerBlocks();
+	@Key("mod.register_items")
+	@DefaultValue("true")
+	public boolean registerItems();
+	@Key("mod.register_entities")
+	@DefaultValue("true")
+	public boolean registerEntities();
 }
