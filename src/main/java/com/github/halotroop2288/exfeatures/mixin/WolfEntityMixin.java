@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.github.halotroop2288.exfeatures.ExFeaturesSounds;
+import com.github.halotroop2288.exfeatures.registries.SoundRegistry;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.passive.WolfEntity;
@@ -26,7 +26,7 @@ public class WolfEntityMixin
 			if (wolf.getEntityWorld().getTimeOfDay() >= 12000 &&
 				new Random().nextInt(3) == 1 && !wolf.isTamed() &&
 				MinecraftClient.getInstance().world.getMoonPhase() == 4)
-				callback.setReturnValue(ExFeaturesSounds.ENTITY_WOLF_HOWL);
+				callback.setReturnValue(SoundRegistry.ENTITY_WOLF_HOWL);
 		}
 	}
 }

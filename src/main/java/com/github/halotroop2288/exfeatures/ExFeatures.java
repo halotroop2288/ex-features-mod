@@ -6,6 +6,7 @@ import com.github.halotroop2288.exfeatures.config.ModConfig;
 import com.github.halotroop2288.exfeatures.registries.BlockRegistry;
 import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
 import com.github.halotroop2288.exfeatures.registries.ItemRegistry;
+import com.github.halotroop2288.exfeatures.registries.SoundRegistry;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -16,16 +17,19 @@ import net.fabricmc.api.ModInitializer;
  * http://www.wtfpl.net/ for more details. */
 public class ExFeatures implements ModInitializer
 {
-	public static ModConfig config;
+	public static final ModConfig config = ConfigFactory.create(ModConfig.class);
+	
 	@Override
 	public void onInitialize()
 	{
-		config = ConfigFactory.create(ModConfig.class);
+		SoundRegistry.registerSounds();
 		EntityRegistry.registerEntities();
 		EntityRegistry.registerEntitySpawns();
-		BlockRegistry.registerBlocks();
-		ItemRegistry.registerItems();
-		ExFeaturesSounds.registerSounds();
+		//
+		if (config.registerBlocks())
+			BlockRegistry.registerBlocks();
+		if (config.registerItems())
+			ItemRegistry.registerItems();
 		System.out.println("Ex-Features loaded.");
 	}
 }
