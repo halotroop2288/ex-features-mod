@@ -10,6 +10,8 @@ import com.github.halotroop2288.exfeatures.registries.SoundRegistry;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.entity.decoration.painting.PaintingMotive;
+import net.minecraft.util.registry.Registry;
 
 /* This program is free software. It comes without any warranty, to
  * the extent permitted by applicable law. You can redistribute it
@@ -34,6 +36,13 @@ public class ExFeatures implements ModInitializer
 			BlockRegistry.registerBlocks();
 		if (config.registerItems())
 			ItemRegistry.registerItems();
+		if (config.registerPaintings())
+		{
+			Registry.register(Registry.MOTIVE, "exfeatures:earth", new PaintingMotive(32, 32));
+			Registry.register(Registry.MOTIVE, "exfeatures:water", new PaintingMotive(32, 32));
+			Registry.register(Registry.MOTIVE, "exfeatures:fire", new PaintingMotive(32, 32));
+			Registry.register(Registry.MOTIVE, "exfeatures:air", new PaintingMotive(32, 32));
+		}
 		System.out.println("Ex-Features loaded.");
 	}
 }
