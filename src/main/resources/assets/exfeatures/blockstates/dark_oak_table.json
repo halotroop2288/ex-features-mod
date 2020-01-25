@@ -1,5 +1,17 @@
 {
 	 "variants": {
-		  "": { "model": "exfeatures:block/dark_oak_table" }
+		  "facing=up,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=up,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=down,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 180 },
+		  "facing=down,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 180 },
+		  
+		  "facing=north,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=north,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=south,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=south,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=east,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=east,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=west,waterlogged=true": { "model": "exfeatures:block/dark_oak_table", "x": 0 },
+		  "facing=west,waterlogged=false": { "model": "exfeatures:block/dark_oak_table", "x": 0 }
 	 }
 }

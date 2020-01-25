@@ -1,8 +1,17 @@
 {
 	 "variants": {
-		  "facing=north": { "model": "exfeatures:block/acacia_chair" },
-		  "facing=south": { "model": "exfeatures:block/acacia_chair", "y": 180 },
-		  "facing=west":  { "model": "exfeatures:block/acacia_chair", "y": 270 },
-		  "facing=east":  { "model": "exfeatures:block/acacia_chair", "y": 90 }
+		  "facing=north,waterlogged=true": { "model": "exfeatures:block/acacia_chair" },
+		  "facing=north,waterlogged=false": { "model": "exfeatures:block/acacia_chair" },
+		  "facing=south,waterlogged=true": { "model": "exfeatures:block/acacia_chair", "y": 180 },
+		  "facing=south,waterlogged=false": { "model": "exfeatures:block/acacia_chair", "y": 180 },
+		  "facing=west,waterlogged=true":  { "model": "exfeatures:block/acacia_chair", "y": 270 },
+		  "facing=west,waterlogged=false":  { "model": "exfeatures:block/acacia_chair", "y": 270 },
+		  "facing=east,waterlogged=true":  { "model": "exfeatures:block/acacia_chair", "y": 90 },
+		  "facing=east,waterlogged=false":  { "model": "exfeatures:block/acacia_chair", "y": 90 },
+		  
+		  "facing=up,waterlogged=false": { "model": "exfeatures:block/acacia_chair" },
+		  "facing=up,waterlogged=true": { "model": "exfeatures:block/acacia_chair" },
+		  "facing=down,waterlogged=false": { "model": "exfeatures:block/acacia_chair" },
+		  "facing=down,waterlogged=true": { "model": "exfeatures:block/acacia_chair" }
 	 }
 }
