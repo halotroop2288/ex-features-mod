@@ -57,7 +57,7 @@ public class ClassicTitleScreen extends Screen
 		" *   * * *  ** *   *   * * * * *    * ",
 		" *   * * *   * *** *** * * * * *    * "
     }; // @formatter:on
-	private static final ItemStack BRUSH_TEXT = new ItemStack(Blocks.COBBLESTONE);
+	private static final ItemStack BRUSH_TEXT = new ItemStack(Blocks.STONE);
 	private static final char CHAR_TEXT = '*';
 	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferDark;
 	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferLight;
@@ -113,7 +113,7 @@ public class ClassicTitleScreen extends Screen
 		if (ExFeatures.config.showJavaEdition())
 		{
 	        this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE);
-	        blit(this.width / 2 - 137 + 88, 90, 0.0F, 0.0F, 98, 14, 128, 16);
+	        blit(this.width / 2 - 137 + 88, 75, 0.0F, 0.0F, 98, 14, 128, 16);
 		}
 		this.drawSplashText();
 		this.drawString(this.font, MINECRAFT_VERSION, 2, 2, 0xFF505050);
@@ -126,7 +126,7 @@ public class ClassicTitleScreen extends Screen
 		int row2Offset = offsetFromTop + 24;
 		int row3Offset = offsetFromTop + 24 * 2;
 		int row4Offset = offsetFromTop + 24 * 3;
-		int lastRowOffset = offsetFromTop + 24 * 4;
+		int lastRowOffset = ExFeatures.config.showUnfinishedTutorialButton() ? offsetFromTop + 24 * 4 : (offsetFromTop + 24 * 4) - 12;
 		int xOffset = this.width / 2 - 100;
 		this.addButton(new ButtonWidget(xOffset, offsetFromTop, 200, 20, I18n.translate("menu.singleplayer"), (buttonWidget) ->
 		{
@@ -275,7 +275,7 @@ public class ClassicTitleScreen extends Screen
 		int width = window.getWidth();
 		int height = window.getHeight();
 		double scaleFactor = window.getScaleFactor();
-		int k = (int) (170 * scaleFactor);
+		int k = (int) (135 * scaleFactor);
 		GlStateManager.multMatrix(Matrix4f.viewboxMatrix(70.0F, (float) width / k, 0.05F, 100.0F));
 		GL11.glViewport(0, height - k, width, k);
 		GL11.glMatrixMode(ARBVertexBlend.GL_MODELVIEW0_ARB);
