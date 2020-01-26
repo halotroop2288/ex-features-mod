@@ -1,5 +1,6 @@
 package com.github.halotroop2288.exfeatures.registries;
 
+import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.github.halotroop2288.exfeatures.blocks.*;
 import com.github.halotroop2288.exfeatures.registries.blocks.*;
 
@@ -13,6 +14,7 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockRegistry
 {
+	public static Block NETHER_REACTOR_CORE = new Block(FabricBlockSettings.copy(Blocks.OBSIDIAN).build());
 	public static Block RUBY_ORE = new OreBlock(FabricBlockSettings.copy(Blocks.EMERALD_ORE).build());
 	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
 	public static Block CRYING_OBSIDIAN = new CryingObsidianBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN).build());
@@ -27,13 +29,17 @@ public class BlockRegistry
 
 	public static void registerBlocks()
 	{
-		registerBlock("ruby_ore", RUBY_ORE);
-		registerBlock("crying_obsidian", CRYING_OBSIDIAN);
-		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
-		registerBlock("unstable_tnt", UNSTABLE_TNT, ItemGroup.REDSTONE);
-		SlabRegistry.registerSlabs();
-		FlowerRegistry.registerFlowers();
-		FurnitureRegistry.registerFurniturePieces();
+		if (ExFeatures.config.registerBlocks())
+		{
+			registerBlock("ruby_ore", RUBY_ORE);
+			registerBlock("crying_obsidian", CRYING_OBSIDIAN);
+			registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
+			registerBlock("unstable_tnt", UNSTABLE_TNT, ItemGroup.REDSTONE);
+			registerBlock("netherreactor", NETHER_REACTOR_CORE);
+			SlabRegistry.registerSlabs();
+			FlowerRegistry.registerFlowers();
+			FurnitureRegistry.registerFurniturePieces();
+		}
 	}
 
 	public static void registerBlock(String id, Block block, Item blockItem)

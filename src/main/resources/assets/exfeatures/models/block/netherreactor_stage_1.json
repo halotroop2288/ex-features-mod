@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cube_all",
+    "textures": {
+        "all": "exfeatures:block/netherreactor_stage_1"
+    }
+}

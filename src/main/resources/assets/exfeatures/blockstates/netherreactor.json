@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "": { "model": "exfeatures:block/netherreactor_stage_1" },
+        "stage=1": { "model": "exfeatures:block/netherreactor_stage_1" },
+        "stage=2": { "model": "exfeatures:block/netherreactor_stage_2" },
+        "stage=3": { "model": "exfeatures:block/netherreactor_stage_3" }
+    }
+}
