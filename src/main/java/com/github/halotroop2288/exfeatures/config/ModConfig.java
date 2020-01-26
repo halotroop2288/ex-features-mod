@@ -2,9 +2,12 @@ package com.github.halotroop2288.exfeatures.config;
 
 import org.aeonbits.owner.Config;
 
-// How do I even add sources?
+import net.fabricmc.loader.api.FabricLoader;
+
+@Config.Sources({"file:${configDir}"})
 public interface ModConfig extends Config
 {
+	static final String location = FabricLoader.getInstance().getConfigDirectory().toString();
 	// GUIs
 		// Title screen
 	@Key("menu.title.use_custom_title_screen")

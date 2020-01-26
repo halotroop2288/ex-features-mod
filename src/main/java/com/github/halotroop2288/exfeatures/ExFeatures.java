@@ -15,14 +15,19 @@ import net.fabricmc.loader.api.FabricLoader;
  * http://www.wtfpl.net/ for more details. */
 public class ExFeatures implements ModInitializer
 {
-	public static final ModConfig config = ConfigFactory.create(ModConfig.class);
-	public static final boolean useModMenu = FabricLoader.getInstance().isModLoaded("modmenu") && config.modmenuEnabled();
-	public static final boolean useTrinkets = FabricLoader.getInstance().isModLoaded("trinkets") && config.trinketsEnabled();
-	public static final boolean useIndev = FabricLoader.getInstance().isModLoaded("indevworldgen") && config.indevEnabled();
+	public static ModConfig config;
+	public static boolean useModMenu;
+	public static boolean useTrinkets;
+	public static boolean useIndev;
 	
 	@Override
 	public void onInitialize()
 	{
+	    ConfigFactory.setProperty("configDir", FabricLoader.getInstance().getConfigDirectory().toString() + "/ex-features.cfg");
+	    config = ConfigFactory.create(ModConfig.class);
+	    useModMenu = FabricLoader.getInstance().isModLoaded("modmenu") && config.modmenuEnabled();
+	    useTrinkets = FabricLoader.getInstance().isModLoaded("trinkets") && config.trinketsEnabled();
+	    useIndev = FabricLoader.getInstance().isModLoaded("indevworldgen") && config.indevEnabled();
 		SoundRegistry.registerSounds(); // Sounds must be registered for other features
 		EntityRegistry.registerEntities(config.registerEntities());
 		EntityRegistry.registerEntitySpawns(config.spawnUnusedMobs());
