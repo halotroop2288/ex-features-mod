@@ -1,4 +1,4 @@
-package com.github.halotroop2288.exfeatures.gui;
+package com.github.halotroop2288.exfeatures.gui.menu;
 
 import io.github.prospector.modmenu.gui.ModListScreen;
 import net.minecraft.client.MinecraftClient;

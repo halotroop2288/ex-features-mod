@@ -1,6 +1,6 @@
 package com.github.halotroop2288.exfeatures.blocks;
 
-import com.github.halotroop2288.exfeatures.gui.LockedChestScreen;
+import com.github.halotroop2288.exfeatures.gui.container.LockedChestScreen;
 import com.ibm.icu.util.Calendar;
 
 import net.minecraft.block.Block;

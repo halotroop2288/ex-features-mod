@@ -1,4 +1,4 @@
-package com.github.halotroop2288.exfeatures.gui;
+package com.github.halotroop2288.exfeatures.gui.container;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.ConfirmChatLinkScreen;
