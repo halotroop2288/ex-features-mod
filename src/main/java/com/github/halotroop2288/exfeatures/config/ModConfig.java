@@ -3,7 +3,6 @@ package com.github.halotroop2288.exfeatures.config;
 import org.aeonbits.owner.Config;
 
 // How do I even add sources?
-@SuppressWarnings("unused")
 public interface ModConfig extends Config
 {
 	// GUIs
