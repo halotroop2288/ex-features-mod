@@ -7,7 +7,7 @@
   "client": [
     "WolfEntityMixin",
     "InGameHudMixin",
-    "TitleScreenMixin"
+    "MenuReplacerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

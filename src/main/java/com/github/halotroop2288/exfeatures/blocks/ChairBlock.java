@@ -1,13 +1,21 @@
 package com.github.halotroop2288.exfeatures.blocks;
 
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Waterloggable;
 import net.minecraft.entity.EntityContext;
-import net.minecraft.fluid.*;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
-import net.minecraft.util.math.*;
-import net.minecraft.util.shape.*;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class ChairBlock extends Block implements Waterloggable
@@ -67,7 +75,7 @@ public class ChairBlock extends Block implements Waterloggable
 	@Override
 	public VoxelShape getOutlineShape(BlockState state, BlockView view, BlockPos pos, EntityContext ePos)
 	{
-		switch ((Direction) state.get(FACING))
+		switch (state.get(FACING))
 		{
 		case NORTH:
 		default:

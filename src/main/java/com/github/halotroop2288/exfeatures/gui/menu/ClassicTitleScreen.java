@@ -1,5 +1,13 @@
 package com.github.halotroop2288.exfeatures.gui.menu;
 
+import java.nio.ByteBuffer;
+import java.util.Random;
+
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.opengl.ARBVertexBlend;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.system.MemoryUtil;
+
 import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.datafixers.util.Pair;
@@ -14,6 +22,7 @@ import net.minecraft.client.gui.screen.options.AccessibilityScreen;
 import net.minecraft.client.gui.screen.options.LanguageOptionsScreen;
 import net.minecraft.client.gui.screen.resourcepack.ResourcePackOptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
+import net.minecraft.client.gui.widget.AbstractButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.render.BufferBuilder;
@@ -34,14 +43,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.GameMode;
 import net.minecraft.world.level.LevelGeneratorType;
 import net.minecraft.world.level.LevelInfo;
-
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.opengl.ARBVertexBlend;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.system.MemoryUtil;
-
-import java.nio.ByteBuffer;
-import java.util.Random;
 
 public class ClassicTitleScreen extends Screen
 {
@@ -80,7 +81,7 @@ public class ClassicTitleScreen extends Screen
 		int buttonWidth = 200;
 		int buttonHeight = 20;
 		initButtons(this.height / 4 + 48, buttonWidth, buttonHeight);
-		if ((double)(new Random()).nextFloat() < 1.0E-4D)
+		if ((new Random()).nextFloat() < 1.0E-4D)
 		{
 			MINECRAFT_LOGO = new String[]
 			{ // @formatter:off
@@ -166,7 +167,7 @@ public class ClassicTitleScreen extends Screen
 	private void initAccessibilityButtons(int offset)
 	{
 		this.addButton(
-			new TexturedButtonWidget(this.width / 2 - 124, offset, 20, 20, 0, 106, 20, ButtonWidget.WIDGETS_LOCATION, 256, 256, (buttonWidget) ->
+			new TexturedButtonWidget(this.width / 2 - 124, offset, 20, 20, 0, 106, 20, AbstractButtonWidget.WIDGETS_LOCATION, 256, 256, (buttonWidget) ->
 			{
 				this.minecraft.openScreen(new LanguageOptionsScreen(this, this.minecraft.options, this.minecraft.getLanguageManager()));
 			}, I18n.translate("narrator.button.language")));
@@ -305,7 +306,7 @@ public class ClassicTitleScreen extends Screen
 						continue;
 					LogoEffectRandomizer logoeffectrandomizer = this.logoEffects[x][y];
 					float position = (float) (logoeffectrandomizer.lastTickPosition
-						+ ((logoeffectrandomizer.position - logoeffectrandomizer.lastTickPosition) * (double) partialTicks));
+						+ ((logoeffectrandomizer.position - logoeffectrandomizer.lastTickPosition) * partialTicks));
 					float scale = 1.0F;
 					if (pass == 0 && position == 0)
 					{ continue; }

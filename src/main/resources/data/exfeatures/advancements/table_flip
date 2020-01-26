@@ -1,0 +1,30 @@
+{
+    "__comment": "Advancement suggested by i509VCB on Discord",
+    "display": {
+        "title": {
+            "text": "(╯°□°）╯︵ ┻━┻",
+            "bold": true,
+            "italic": false,
+            "underlined": false,
+            "strikethrough": false,
+            "obfuscated": false
+        },
+        "description": {
+            "text": "Flip a table upside down"
+        },
+        "icon": {
+            "item": "exfeatures:oak_table",
+            "nbt": "facing=down"
+        },
+        "frame": "task",
+        "show_toast": true,
+        "announce_to_chat": true,
+        "hidden": false,
+        "background": "minecraft:textures/gui/advancements/backgrounds/stone.png"
+    },
+    "criteria": {
+        "Flip a table": {
+            "trigger": "minecraft:impossible"
+        }
+    }
+}

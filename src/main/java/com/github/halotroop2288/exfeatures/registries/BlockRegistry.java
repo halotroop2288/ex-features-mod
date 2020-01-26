@@ -1,7 +1,10 @@
 package com.github.halotroop2288.exfeatures.registries;
 
-import com.github.halotroop2288.exfeatures.blocks.*;
-import com.github.halotroop2288.exfeatures.registries.blocks.*;
+import com.github.halotroop2288.exfeatures.blocks.CryingObsidianBlock;
+import com.github.halotroop2288.exfeatures.blocks.UnstableTNTBlock;
+import com.github.halotroop2288.exfeatures.registries.blocks.FlowerRegistry;
+import com.github.halotroop2288.exfeatures.registries.blocks.FurnitureRegistry;
+import com.github.halotroop2288.exfeatures.registries.blocks.SlabRegistry;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
@@ -21,9 +24,11 @@ public class BlockRegistry
 	public static Block BOARD_CHALKBOARD = new SignBlock(FabricBlockSettings.copy(Blocks.BLACK_CONCRETE).build(), SignType.DARK_OAK); // TODO: This is a placeholder
 	public static Block GLOWING_OBSIDIAN = new Block(Block.Settings.copy(Blocks.OBSIDIAN))
 	{
+		@Override
 		public int getLuminance(BlockState state)
 		{ return 9; }
 
+		@Override
 		public boolean hasEmissiveLighting(BlockState state)
 		{ return true; }
 	};

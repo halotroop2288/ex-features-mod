@@ -2,8 +2,10 @@ package com.github.halotroop2288.exfeatures.registries.blocks;
 
 import com.github.halotroop2288.exfeatures.registries.BlockRegistry;
 
-import net.minecraft.block.*;
-import net.minecraft.item.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.SlabBlock;
+import net.minecraft.item.ItemGroup;
 
 public class SlabRegistry
 {

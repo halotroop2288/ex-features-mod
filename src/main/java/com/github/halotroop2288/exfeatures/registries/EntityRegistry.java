@@ -12,8 +12,8 @@ import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.Biome.SpawnEntry;
+import net.minecraft.world.biome.Biomes;
 
 public class EntityRegistry
 {

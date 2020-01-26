@@ -1,7 +1,6 @@
 package com.github.halotroop2288.exfeatures.config;
 
 import org.aeonbits.owner.Config;
-import org.aeonbits.owner.Config.Sources;
 
 // How do I even add sources?
 @SuppressWarnings("unused")
