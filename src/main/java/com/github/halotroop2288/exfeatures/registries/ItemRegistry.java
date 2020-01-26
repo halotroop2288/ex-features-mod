@@ -21,19 +21,22 @@ public class ItemRegistry
 	public static Item STEVE_VILLAGER_SPAWN_EGG = new SpawnEggItem(EntityRegistry.STEVE_VILLAGER, 0x000000, 0xFFFFFF, new Item.Settings().group(ItemGroup.MISC));
 	// TODO: Make studded weaker than leather by a little bit, and plate stronger than iron but less than diamond
 
-	public static void registerItems()
+	public static void registerItems(boolean doIt)
 	{
-		registerItem("quiver", QUIVER);
-		registerItem("ruby", RUBY);
-		registerItem("fire", FIRE);
-		registerItem("studded_helmet", STUDDED_HELMET);
-		registerItem("studded_chestplate", STUDDED_CHESTPLATE);
-		registerItem("studded_leggings", STUDDED_LEGGINGS);
-		registerItem("studded_boots", STUDDED_BOOTS);
-		registerItem("plate_helmet", PLATE_HELMET);
-		registerItem("plate_chestplate", PLATE_CHESTPLATE);
-		registerItem("pigman_spawn_egg", PIGMAN_SPAWN_EGG);
-		registerItem("steve_villager_spawn_egg", STEVE_VILLAGER_SPAWN_EGG);
+		if (doIt)
+		{
+			registerItem("quiver", QUIVER);
+			registerItem("ruby", RUBY);
+			registerItem("fire", FIRE);
+			registerItem("studded_helmet", STUDDED_HELMET);
+			registerItem("studded_chestplate", STUDDED_CHESTPLATE);
+			registerItem("studded_leggings", STUDDED_LEGGINGS);
+			registerItem("studded_boots", STUDDED_BOOTS);
+			registerItem("plate_helmet", PLATE_HELMET);
+			registerItem("plate_chestplate", PLATE_CHESTPLATE);
+			registerItem("pigman_spawn_egg", PIGMAN_SPAWN_EGG);
+			registerItem("steve_villager_spawn_egg", STEVE_VILLAGER_SPAWN_EGG);
+		}
 	}
 	
 	public static void registerItem(String id, Item item)

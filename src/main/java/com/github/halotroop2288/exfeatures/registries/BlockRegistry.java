@@ -1,6 +1,5 @@
 package com.github.halotroop2288.exfeatures.registries;
 
-import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.github.halotroop2288.exfeatures.blocks.*;
 import com.github.halotroop2288.exfeatures.registries.blocks.*;
 
@@ -10,6 +9,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.SignType;
 import net.minecraft.util.registry.Registry;
 
 public class BlockRegistry
@@ -18,6 +18,7 @@ public class BlockRegistry
 	public static Block RUBY_ORE = new OreBlock(FabricBlockSettings.copy(Blocks.EMERALD_ORE).build());
 	public static Block UNSTABLE_TNT = new UnstableTNTBlock(FabricBlockSettings.copy(Blocks.TNT).build());
 	public static Block CRYING_OBSIDIAN = new CryingObsidianBlock(FabricBlockSettings.copy(Blocks.OBSIDIAN).build());
+	public static Block BOARD_CHALKBOARD = new SignBlock(FabricBlockSettings.copy(Blocks.BLACK_CONCRETE).build(), SignType.DARK_OAK); // TODO: This is a placeholder
 	public static Block GLOWING_OBSIDIAN = new Block(Block.Settings.copy(Blocks.OBSIDIAN))
 	{
 		public int getLuminance(BlockState state)
@@ -27,9 +28,9 @@ public class BlockRegistry
 		{ return true; }
 	};
 
-	public static void registerBlocks()
+	public static void registerBlocks(boolean doIt)
 	{
-		if (ExFeatures.config.registerBlocks())
+		if (doIt)
 		{
 			registerBlock("ruby_ore", RUBY_ORE);
 			registerBlock("crying_obsidian", CRYING_OBSIDIAN);

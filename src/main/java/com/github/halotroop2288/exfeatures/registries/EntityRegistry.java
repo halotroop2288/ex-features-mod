@@ -1,6 +1,7 @@
 package com.github.halotroop2288.exfeatures.registries;
 
 import com.github.halotroop2288.exfeatures.ExFeatures;
+import com.github.halotroop2288.exfeatures.config.ModConfig;
 import com.github.halotroop2288.exfeatures.entities.PigmanEntity;
 import com.github.halotroop2288.exfeatures.entities.SeatEntity;
 import com.github.halotroop2288.exfeatures.entities.SteveVillagerEntity;
@@ -16,34 +17,37 @@ import net.minecraft.world.biome.Biome.SpawnEntry;
 
 public class EntityRegistry
 {
-	public static final SpawnEntry GIANT_ZOMBIE_SPAWN = new SpawnEntry(EntityType.GIANT, 1, 0, 2);
-	public static final SpawnEntry ZOMBIE_HORSE_SPAWN = new SpawnEntry(EntityType.ZOMBIE_HORSE, 2, 0, 5);
+	private static ModConfig config = ExFeatures.config;
 	public static final EntityType<SteveVillagerEntity> STEVE_VILLAGER = FabricEntityTypeBuilder.create(EntityCategory.AMBIENT, SteveVillagerEntity::new)
 		.size(EntityDimensions.fixed(1, 2)).build();
 	public static final EntityType<PigmanEntity> PIGMAN = FabricEntityTypeBuilder.create(EntityCategory.AMBIENT, PigmanEntity::new)
 		.size(EntityDimensions.fixed(1, 2)).build();
 	public static final EntityType<SeatEntity> SEAT = FabricEntityTypeBuilder.create(EntityCategory.MISC, SeatEntity::new).build();
 	
-	public static void registerEntities()
+	public static void registerEntities(boolean doIt)
 	{
-		// Optional entities:
-		if (ExFeatures.config.registerEntities())
+		registerEntity("seat", SEAT);
+		if (doIt)
 		{
 			registerEntity("pigman", PIGMAN);
 			registerEntity("steve_villager", STEVE_VILLAGER);
 		}
-		// These have to be registered:
-		registerEntity("seat", SEAT);
 	}
 	
 	private static void registerEntity(String name, EntityType<?> entity)
 	{ Registry.register(Registry.ENTITY_TYPE, new Identifier("exfeatures", name), entity); }
 	
-	public static void registerEntitySpawns()
+	public static void registerEntitySpawns(boolean doIt)
 	{
-		Biomes.DESERT.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
-		Biomes.PLAINS.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
-		Biomes.DEFAULT.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
-		Biomes.BADLANDS.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
+		final SpawnEntry GIANT_ZOMBIE_SPAWN = new SpawnEntry(EntityType.GIANT, config.giantSpawnMin(), config.giantSpawnMed(), config.giantSpawnMax());
+		final SpawnEntry ZOMBIE_HORSE_SPAWN = new SpawnEntry(EntityType.ZOMBIE_HORSE, config.zombieHorseSpawnMin(), config.zombieHorseSpawnMed(), config.zombieHorseSpawnMax());
+		
+		if (doIt)
+		{
+			Biomes.DESERT.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
+			Biomes.PLAINS.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
+			Biomes.DEFAULT.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
+			Biomes.BADLANDS.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
+		}
 	}
 }

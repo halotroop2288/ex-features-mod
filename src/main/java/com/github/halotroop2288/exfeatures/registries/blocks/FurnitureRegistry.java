@@ -34,7 +34,7 @@ public class FurnitureRegistry
 		registerTableAndChair("dark_oak", Blocks.DARK_OAK_PLANKS);
 	}
 	
-	public static void registerTableAndChair(String typeName, Block blockToCopySetttingsFrom)
+	private static void registerTableAndChair(String typeName, Block blockToCopySetttingsFrom)
 	{
 		BlockRegistry.registerBlock(typeName + "_table", new TableBlock(FabricBlockSettings.copy(blockToCopySetttingsFrom).build()), ItemGroup.DECORATIONS);
 		BlockRegistry.registerBlock(typeName + "_chair", new ChairBlock(FabricBlockSettings.copy(blockToCopySetttingsFrom).build()), ItemGroup.DECORATIONS);

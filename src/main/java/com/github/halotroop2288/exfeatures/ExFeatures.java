@@ -3,15 +3,10 @@ package com.github.halotroop2288.exfeatures;
 import org.aeonbits.owner.ConfigFactory;
 
 import com.github.halotroop2288.exfeatures.config.ModConfig;
-import com.github.halotroop2288.exfeatures.registries.BlockRegistry;
-import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
-import com.github.halotroop2288.exfeatures.registries.ItemRegistry;
-import com.github.halotroop2288.exfeatures.registries.SoundRegistry;
+import com.github.halotroop2288.exfeatures.registries.*;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.entity.decoration.painting.PaintingMotive;
-import net.minecraft.util.registry.Registry;
 
 /* This program is free software. It comes without any warranty, to
  * the extent permitted by applicable law. You can redistribute it
@@ -28,21 +23,12 @@ public class ExFeatures implements ModInitializer
 	@Override
 	public void onInitialize()
 	{
-		SoundRegistry.registerSounds();
-		EntityRegistry.registerEntities();
-		EntityRegistry.registerEntitySpawns();
-		//
-		if (config.registerBlocks())
-			BlockRegistry.registerBlocks();
-		if (config.registerItems())
-			ItemRegistry.registerItems();
-		if (config.registerPaintings())
-		{
-			Registry.register(Registry.MOTIVE, "exfeatures:earth", new PaintingMotive(32, 32));
-			Registry.register(Registry.MOTIVE, "exfeatures:water", new PaintingMotive(32, 32));
-			Registry.register(Registry.MOTIVE, "exfeatures:fire", new PaintingMotive(32, 32));
-			Registry.register(Registry.MOTIVE, "exfeatures:air", new PaintingMotive(32, 32));
-		}
+		SoundRegistry.registerSounds(); // Sounds must be registered for other features
+		EntityRegistry.registerEntities(config.registerEntities());
+		EntityRegistry.registerEntitySpawns(config.spawnUnusedMobs());
+		BlockRegistry.registerBlocks(config.registerBlocks());
+		ItemRegistry.registerItems(config.registerItems());
+		PaintingRegistry.registerPaintings(config.registerPaintings());
 		System.out.println("Ex-Features loaded.");
 	}
 }

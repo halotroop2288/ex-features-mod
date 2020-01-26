@@ -9,18 +9,22 @@ public interface ModConfig extends Config
 {
 	// GUIs
 		// Title screen
-	@Key("title.use_custom_title_screen")
+	@Key("menu.title.use_custom_title_screen")
 	@DefaultValue("true")
 	public boolean useCustomTitleScreen();
-	@Key("title.show_java_edition_logo")
-	@DefaultValue("true")
+	@Key("menu.title.show_java_edition_logo")
+	@DefaultValue("false")
 	public boolean showJavaEdition();
-	@Key("title.show_unfinisehd_tutorial_button")
+	@Key("menu.title.show_unfinisehd_tutorial_button")
 	@DefaultValue("false")
 	public boolean showUnfinishedTutorialButton();
-	@Key("title.show_accessibility_buttons")
+	@Key("menu.title.show_accessibility_buttons")
 	@DefaultValue("false")
 	public boolean showAccessibilityButtons();
+		// Inventory
+	@Key("menu.inventory.use_custom_inventory_screen")
+	@DefaultValue("true")
+	public boolean useCustomInventoryScreen();
 	
 	// Registries
 	
@@ -33,6 +37,12 @@ public interface ModConfig extends Config
 	@Key("mod.register_entities")
 	@DefaultValue("true")
 	public boolean registerEntities();
+	@Key("mod.register_paintings")
+	@DefaultValue("true")
+	public boolean registerPaintings();
+	@Key("mod.register_unused_mob_spawns")
+	@DefaultValue("true")
+	public boolean spawnUnusedMobs();
 	
 	// Dependencies
 	
@@ -45,4 +55,23 @@ public interface ModConfig extends Config
 	@Key("dependencies.use_indev_world_gen_integration")
 	@DefaultValue("true")
 	public boolean indevEnabled();
+
+	@Key("entities.giant_zombie.spawn.minimum")
+	@DefaultValue("0")
+	public int giantSpawnMin();
+	@Key("entities.giant_zombie.spawn.weight")
+	@DefaultValue("1")
+	public int giantSpawnMed();
+	@Key("entities.giant_zombie.spawn.maximum")
+	@DefaultValue("2")
+	public int giantSpawnMax();
+	@Key("entities.zombie_horse.spawn.minimum")
+	@DefaultValue("2")
+	public int zombieHorseSpawnMin();
+	@Key("entities.zombie_horse.spawn.weight")
+	@DefaultValue("2")
+	public int zombieHorseSpawnMed();
+	@Key("entities.zombie_horse.spawn.maximum")
+	@DefaultValue("5")
+	public int zombieHorseSpawnMax();
 }
