@@ -1,4 +1,4 @@
-package com.github.halotroop2288.exfeatures.gui;
+package com.github.halotroop2288.exfeatures.gui.menu;
 
 import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.mojang.blaze3d.platform.GlStateManager;
