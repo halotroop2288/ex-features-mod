@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import com.github.halotroop2288.exfeatures.ExFeatures;
 import com.github.halotroop2288.exfeatures.ExFeaturesClient;
 
 import net.minecraft.SharedConstants;
@@ -34,7 +35,8 @@ public class InGameHudMixin extends DrawableHelper
 				&& this.client.options.perspective == 0 && !this.player.isInvisible() && MinecraftClient.isHudEnabled() && currentScreen == null)
 				|| (currentScreen instanceof GameMenuScreen) && ((GameMenuScreen) (currentScreen)).isPauseScreen())
 				ExFeaturesClient.drawPlayerPreview(25, 50, 20, this.player);
-			this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
+			if (ExFeatures.config.showVersionStringInHud())
+				this.client.textRenderer.draw("Minecraft " + SharedConstants.getGameVersion().getName(), 1.55F, 2F, 14737632); // CLOSE ENOUGH!
 		}
 	}
 }

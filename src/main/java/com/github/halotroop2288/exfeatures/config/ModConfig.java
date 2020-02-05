@@ -24,6 +24,11 @@ public interface ModConfig extends Config
 	@DefaultValue("true")
 	public boolean useCustomInventoryScreen();
 	
+	// HUD
+	@Key("hud.show_version_string")
+	@DefaultValue("true")
+	public boolean showVersionStringInHud();
+	
 	// Registries
 	
 	@Key("mod.register_blocks")
