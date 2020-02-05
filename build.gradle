@@ -8,8 +8,8 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = "${project.archives_base_name}-${project.releaseType}"
-version = project.mod_version
+archivesBaseName = project.archives_base_name
+version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
 minecraft {
@@ -35,12 +35,17 @@ repositories {
 		url = "https://minecraft.curseforge.com/api/maven"
 	}
 	maven {
-		url = "https://jitpack.io"
-	}
-	maven {
 		name = "NerdHubMC"
 		url = "https://maven.abusedmaster.xyz/"
 	}
+    maven {
+        name = 'minelp'
+        url = 'http://repo.minelittlepony-mod.com/maven/snapshot'
+    }
+    maven {
+        name = 'minelp-release'
+        url = 'http://repo.minelittlepony-mod.com/maven/release'
+    }
 }
 
 dependencies {
@@ -54,8 +59,13 @@ dependencies {
 	implementation "org.aeonbits.owner:owner:${config_version}"
 	
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
-    modImplementation "io.github.cottonmc:LibGui:${libgui_version}"
-	modImplementation "com.github.emilyploszaj:trinkets:${trinkets_version}"
+//  modImplementation "io.github.cottonmc:LibGui:${libgui_version}"
+//	modImplementation "com.github.emilyploszaj:trinkets:${trinkets_version}"
+	
+    modApi "com.minelittlepony:Kirin:1.5.2-1.15.+"
+    
+//  include "com.tamaized:Void-Fog:+" // Crashes the game due to a bug with Mixin and Fabric loader.
+	modImplementation "com.tamaized:Void-Fog:+"
 }
 
 releasesHub {
@@ -129,9 +139,6 @@ publishing {
 		}
 	}
 	repositories {
-		maven {
-		name = "CurseForge"
-		url = "https://minecraft.curseforge.com/api/maven"
-		}
+		mavenLocal()
 	}
 }

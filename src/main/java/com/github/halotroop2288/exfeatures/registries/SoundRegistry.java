@@ -15,6 +15,5 @@ public class SoundRegistry
 	public static void registerSounds()
 	{
 		registerSound(WOLF_HOWL_ID, ENTITY_WOLF_HOWL);
-		System.out.println("Unused sounds readded.");
 	}
 }

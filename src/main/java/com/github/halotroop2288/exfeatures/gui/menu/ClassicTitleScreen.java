@@ -52,25 +52,27 @@ public class ClassicTitleScreen extends Screen
 	private static final double BLOCK_SPEED = 1;
 	private static String[] MINECRAFT_LOGO =
 	{ // @formatter:off
-		" *   * * *   * *** *** *** *** *** ***",
-		" ** ** * **  * *   *   * * * * *    * ",
-		" * * * * * * * **  *   **  *** **   * ",
-		" *   * * *  ** *   *   * * * * *    * ",
-		" *   * * *   * *** *** * * * * *    * "
-    }; // @formatter:on
+			" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
+			" * * * * * * * **  *   **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+			" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 	private static final ItemStack BRUSH_TEXT = new ItemStack(Blocks.STONE);
 	private static final char CHAR_TEXT = '*';
 	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferDark;
 	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> textBufferLight;
 	private static final String MINECRAFT_VERSION = "Minecraft " + SharedConstants.getGameVersion().getName();
 	private static final String COPYRIGHT = "Copyright Mojang AB. Do not distribute.";
-	private static final Identifier EDITION_TITLE_TEXTURE = new Identifier("minecraft", "textures/gui/title/edition.png");
+	private static final Identifier EDITION_TITLE_TEXTURE = new Identifier("minecraft",
+		"textures/gui/title/edition.png");
 	private static final Identifier ACCESSIBILITY_ICON = new Identifier("minecraft", "textures/gui/accessibility.png");
 	private String splashText;
 	private LogoEffectRandomizer[][] logoEffects;
+	private float time;
 
 	public ClassicTitleScreen()
-	{ super(new TranslatableText("narrator.screen.title")); }
+	{
+		super(new TranslatableText("narrator.screen.title"));
+		time = 0;
+	}
 
 	@Override
 	public void init()
@@ -85,23 +87,17 @@ public class ClassicTitleScreen extends Screen
 		{
 			MINECRAFT_LOGO = new String[]
 			{ // @formatter:off
-				" *   * * *   * *** *** *** *** *** ***",
-				" ** ** * **  * *   *   * * * * *    * ",
-				" * * * * * * * *   **  **  *** **   * ",
-				" *   * * *  ** *   *   * * * * *    * ",
-				" *   * * *   * *** *** * * * * *    * "
-		    }; // @formatter:on
+					" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
+					" * * * * * * * *   **  **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+					" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 		}
 		else
 		{
 			MINECRAFT_LOGO = new String[]
 			{ // @formatter:off
-				" *   * * *   * *** *** *** *** *** ***",
-				" ** ** * **  * *   *   * * * * *    * ",
-				" * * * * * * * **  *   **  *** **   * ",
-				" *   * * *  ** *   *   * * * * *    * ",
-				" *   * * *   * *** *** * * * * *    * "
-		    }; // @formatter:on
+					" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
+					" * * * * * * * **  *   **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+					" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 		}
 	}
 
@@ -109,16 +105,17 @@ public class ClassicTitleScreen extends Screen
 	public void render(int mouseX, int mouseY, float fakePartialTicks)
 	{
 		float partialTicks = this.minecraft.getTickDelta();
-		this.renderDirtBackground(0);
+		this.renderBackground();
 		this.drawLogo(partialTicks);
 		if (ExFeatures.config.showJavaEdition())
 		{
-	        this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE);
-	        blit(this.width / 2 - 137 + 88, 75, 0.0F, 0.0F, 98, 14, 128, 16);
+			this.minecraft.getTextureManager().bindTexture(EDITION_TITLE_TEXTURE);
+			blit(this.width / 2 - 137 + 88, 75, 0.0F, 0.0F, 98, 14, 128, 16);
 		}
 		this.drawSplashText();
 		this.drawString(this.font, MINECRAFT_VERSION, 2, 2, 0xFF505050);
-		this.drawString(this.font, COPYRIGHT, this.width - this.font.getStringWidth(COPYRIGHT) - 2, this.height - 10, 0xFFFFFFFF);
+		this.drawString(this.font, COPYRIGHT, this.width - this.font.getStringWidth(COPYRIGHT) - 2, this.height - 10,
+			0xFFFFFFFF);
 		super.render(mouseX, mouseY, partialTicks);
 	}
 
@@ -127,52 +124,62 @@ public class ClassicTitleScreen extends Screen
 		int row2Offset = offsetFromTop + 24;
 		int row3Offset = offsetFromTop + 24 * 2;
 		int row4Offset = offsetFromTop + 24 * 3;
-		int lastRowOffset = ExFeatures.config.showUnfinishedTutorialButton() ? offsetFromTop + 24 * 4 : (offsetFromTop + 24 * 4) - 12;
+		int lastRowOffset = ExFeatures.config.showUnfinishedTutorialButton() ? offsetFromTop + 24 * 4
+			: (offsetFromTop + 24 * 4) - 12;
 		int xOffset = this.width / 2 - 100;
-		this.addButton(new ButtonWidget(xOffset, offsetFromTop, 200, 20, I18n.translate("menu.singleplayer"), (buttonWidget) ->
-		{
-			this.minecraft.openScreen(new SelectWorldScreen(this));
-		}));
-		this.addButton(new ButtonWidget(xOffset, row2Offset, 200, 20, I18n.translate("menu.multiplayer"), (buttonWidget) ->
-		{
-			this.minecraft.openScreen(new MultiplayerScreen(this));
-		}));
+		this.addButton(new ButtonWidget(xOffset, offsetFromTop, 200, 20, I18n.translate("menu.singleplayer"),
+			(buttonWidget) ->
+			{
+				this.minecraft.openScreen(new SelectWorldScreen(this));
+			}));
+		this.addButton(
+			new ButtonWidget(xOffset, row2Offset, 200, 20, I18n.translate("menu.multiplayer"), (buttonWidget) ->
+			{
+				this.minecraft.openScreen(new MultiplayerScreen(this));
+			}));
 		if (ExFeatures.useModMenu)
-			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("menu.modspacks"), (buttonWidget) ->
-			{
-				this.minecraft.openScreen(new ModsNPacksScreen(this));
-			}));
-		else
-			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("options.resourcepack"), (buttonWidget) ->
-			{
-				this.minecraft.openScreen(new ResourcePackOptionsScreen(this, this.minecraft.options));
-			}));
-		if (ExFeatures.config.showUnfinishedTutorialButton())
-			this.addButton(new ButtonWidget(xOffset, row4Offset, 200, 20, I18n.translate("menu.playtutorial"), (buttonWidget) ->
+			this.addButton(
+				new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("menu.modspacks"), (buttonWidget) ->
 				{
-					this.minecraft.startIntegratedServer("Tutorial", "Tutorial", new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+					this.minecraft.openScreen(new ModsNPacksScreen(this));
 				}));
-		this.addButton(new ButtonWidget(xOffset, lastRowOffset, 98, 20, I18n.translate("menu.options"), (buttonWidget) ->
-		{
-			this.minecraft.openScreen(new SettingsScreen(this, this.minecraft.options));
-		}));
-		this.addButton(new ButtonWidget(this.width / 2 + 2, lastRowOffset, 98, 20, I18n.translate("menu.quit"), (buttonWidget) ->
-		{
-			this.minecraft.scheduleStop();
-		}));
+		else
+			this.addButton(new ButtonWidget(xOffset, row3Offset, 200, 20, I18n.translate("options.resourcepack"),
+				(buttonWidget) ->
+				{
+					this.minecraft.openScreen(new ResourcePackOptionsScreen(this, this.minecraft.options));
+				}));
+		if (ExFeatures.config.showUnfinishedTutorialButton())
+			this.addButton(new ButtonWidget(xOffset, row4Offset, 200, 20, I18n.translate("menu.playtutorial"),
+				(buttonWidget) ->
+				{
+					this.minecraft.startIntegratedServer("Tutorial", "Tutorial",
+						new LevelInfo(0, GameMode.SURVIVAL, true, true, LevelGeneratorType.DEFAULT));
+				}));
+		this.addButton(
+			new ButtonWidget(xOffset, lastRowOffset, 98, 20, I18n.translate("menu.options"), (buttonWidget) ->
+			{
+				this.minecraft.openScreen(new SettingsScreen(this, this.minecraft.options));
+			}));
+		this.addButton(new ButtonWidget(this.width / 2 + 2, lastRowOffset, 98, 20, I18n.translate("menu.quit"),
+			(buttonWidget) ->
+			{
+				this.minecraft.scheduleStop();
+			}));
 		if (ExFeatures.config.showAccessibilityButtons())
 			initAccessibilityButtons(lastRowOffset);
 	}
 
 	private void initAccessibilityButtons(int offset)
 	{
-		this.addButton(
-			new TexturedButtonWidget(this.width / 2 - 124, offset, 20, 20, 0, 106, 20, AbstractButtonWidget.WIDGETS_LOCATION, 256, 256, (buttonWidget) ->
+		this.addButton(new TexturedButtonWidget(this.width / 2 - 124, offset, 20, 20, 0, 106, 20,
+			AbstractButtonWidget.WIDGETS_LOCATION, 256, 256, (buttonWidget) ->
 			{
-				this.minecraft.openScreen(new LanguageOptionsScreen(this, this.minecraft.options, this.minecraft.getLanguageManager()));
+				this.minecraft.openScreen(new LanguageOptionsScreen(this, this.minecraft.options,
+					this.minecraft.getLanguageManager()));
 			}, I18n.translate("narrator.button.language")));
-		this.addButton(new TexturedButtonWidget(this.width / 2 + 104, offset, 20, 20, 0, 0, 20, ACCESSIBILITY_ICON, 32, 64,
-			(buttonWidget) ->
+		this.addButton(new TexturedButtonWidget(this.width / 2 + 104, offset, 20, 20, 0, 0, 20, ACCESSIBILITY_ICON, 32,
+			64, (buttonWidget) ->
 			{
 				this.minecraft.openScreen(new AccessibilityScreen(this, this.minecraft.options));
 			}, I18n.translate("narrator.button.accessibility")));
@@ -205,7 +212,8 @@ public class ClassicTitleScreen extends Screen
 		GL11.glPopMatrix();
 	}
 
-	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> bakeBlock(ItemStack itemStack, float brightness)
+	private static Pair<BufferBuilder.DrawArrayParameters, ByteBuffer> bakeBlock(ItemStack itemStack,
+		float brightness)
 	{
 		BakedModel model = MinecraftClient.getInstance().getItemRenderer().getModels().getModel(itemStack);
 		BufferBuilder buffer = new BufferBuilder(4 * Direction.values().length);
@@ -214,7 +222,8 @@ public class ClassicTitleScreen extends Screen
 		for (Direction direction : Direction.values())
 		{
 			for (BakedQuad quad : model.getQuads(null, direction, random))
-			{ buffer.quad(MATRIX_STACK_ENTRY, quad, brightness, brightness, brightness, MISSING_COLOUR, OverlayTexture.DEFAULT_UV); }
+			{ buffer.quad(MATRIX_STACK_ENTRY, quad, brightness, brightness, brightness, MISSING_COLOUR,
+				OverlayTexture.DEFAULT_UV); }
 		}
 		buffer.end();
 		return buffer.popData();
@@ -229,10 +238,14 @@ public class ClassicTitleScreen extends Screen
 		private LogoEffectRandomizer(final Random rand, final int xIndex, final int yIndex)
 		{
 			this.position = this.lastTickPosition = (10 + yIndex) + rand.nextDouble() * 32.0D + xIndex; // Alpha
-			// this.position = this.lastTickPosition = 40 + (this.rand.nextDouble() * 50D); // Normal
-			// this.position = this.lastTickPosition = (double) (10 + yIndex) + this.rand.nextDouble() * 32D + (double) xIndex; // Left to right
-			// this.position = this.lastTickPosition = (double) 120 + (double) -Math.abs(xIndex - 24) * 4; // Outside to middle
-			// this.position = this.lastTickPosition = (double) 120 + (double) -Math.abs(xIndex - 24) * 4 + Math.abs(yIndex - 4.5) * 10; // ?
+			// this.position = this.lastTickPosition = 40 + (this.rand.nextDouble() * 50D);
+			// // Normal
+			// this.position = this.lastTickPosition = (double) (10 + yIndex) +
+			// this.rand.nextDouble() * 32D + (double) xIndex; // Left to right
+			// this.position = this.lastTickPosition = (double) 120 + (double)
+			// -Math.abs(xIndex - 24) * 4; // Outside to middle
+			// this.position = this.lastTickPosition = (double) 120 + (double)
+			// -Math.abs(xIndex - 24) * 4 + Math.abs(yIndex - 4.5) * 10; // ?
 		}
 
 		public void update()
@@ -261,7 +274,8 @@ public class ClassicTitleScreen extends Screen
 		{ textBufferLight = bakeBlock(BRUSH_TEXT, 1); }
 		if (this.logoEffects == null)
 		{
-			this.logoEffects = new LogoEffectRandomizer[ClassicTitleScreen.MINECRAFT_LOGO[0].length()][ClassicTitleScreen.MINECRAFT_LOGO.length];
+			this.logoEffects = new LogoEffectRandomizer[ClassicTitleScreen.MINECRAFT_LOGO[0]
+				.length()][ClassicTitleScreen.MINECRAFT_LOGO.length];
 			Random random = new Random();
 			for (int i = 0; i < this.logoEffects.length; i++)
 			{
@@ -296,7 +310,8 @@ public class ClassicTitleScreen extends Screen
 			GL11.glRotatef(15.0F, 1.0F, 0.0F, 0.0F);
 			GL11.glScalef(0.89F, 1.0F, 0.4F);
 			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glTranslatef(-ClassicTitleScreen.MINECRAFT_LOGO[0].length() * 0.5F, -ClassicTitleScreen.MINECRAFT_LOGO.length * 0.5F, 0.0F);
+			GL11.glTranslatef(-ClassicTitleScreen.MINECRAFT_LOGO[0].length() * 0.5F,
+				-ClassicTitleScreen.MINECRAFT_LOGO.length * 0.5F, 0.0F);
 			for (int y = 0; y < ClassicTitleScreen.MINECRAFT_LOGO.length; y++)
 			{
 				for (int x = 0; x < ClassicTitleScreen.MINECRAFT_LOGO[y].length(); x++)

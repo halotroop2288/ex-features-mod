@@ -4,12 +4,12 @@ import java.util.List;
 
 import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
 
-import net.minecraft.client.network.packet.EntitySpawnS2CPacket;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Packet;
+import net.minecraft.network.packet.s2c.play.EntitySpawnGlobalS2CPacket;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
@@ -75,7 +75,7 @@ public class SeatEntity extends Entity
 	
 	@Override
 	public Packet<?> createSpawnPacket()
-	{ return new EntitySpawnS2CPacket(this); }
+	{ return new EntitySpawnGlobalS2CPacket(this); }
 	
 	public static ActionResult create(World world, BlockPos pos, double yOffset, PlayerEntity player)
 	{

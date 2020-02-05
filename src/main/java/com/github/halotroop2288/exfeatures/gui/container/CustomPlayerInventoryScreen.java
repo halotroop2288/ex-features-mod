@@ -18,10 +18,6 @@ public class CustomPlayerInventoryScreen extends AbstractInventoryScreen<PlayerC
 	public static final Identifier BACKGROUND_TEXTURE = new Identifier("exfeatures", "textures/gui/container/inventory.png");
 	private float mouseX;
 	private float mouseY;
-	private boolean isOpen;
-	private boolean isNarrow;
-	private boolean isMouseDown;
-	
 	public CustomPlayerInventoryScreen(PlayerEntity player)
 	{
 		super(player.playerContainer, player.inventory, player.getName());
@@ -36,8 +32,6 @@ public class CustomPlayerInventoryScreen extends AbstractInventoryScreen<PlayerC
 		{
 			this.x = (this.width - this.containerWidth) / 2;
 			this.y = (this.height - this.containerHeight) / 2;
-			this.isNarrow = this.width < 379;
-			this.isOpen = true;
 		}
 	}
 	

@@ -1,3 +1,7 @@
+![GitHub All Releases](https://img.shields.io/github/downloads/halotroop2288/ex-features-mod/total?color=red)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/halotroop2288/ex-features-mod?color=purple&include_prereleases&label=version)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/halotroop2288/ex-features-mod?color=blue)
+
 # Ex-Features Mod
 
 This mod re-adds all the cool features from the cutting room floor of Minecraft's development.<br/>
