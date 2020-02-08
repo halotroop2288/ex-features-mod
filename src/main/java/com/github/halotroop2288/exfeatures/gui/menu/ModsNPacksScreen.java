@@ -1,7 +1,6 @@
 package com.github.halotroop2288.exfeatures.gui.menu;
 
-import io.github.prospector.modmenu.gui.ModListScreen;
-import io.github.prospector.modmenu.gui.ModMenuButtonWidget;
+import io.github.prospector.modmenu.api.ModMenuApi;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.resourcepack.ResourcePackOptionsScreen;
@@ -24,7 +23,10 @@ public class ModsNPacksScreen extends Screen
 	protected void init()
 	{
 		int offsetFromTop = (this.height / 4) + 60;
-		this.addButton(new ModMenuButtonWidget(this.width / 2 - 150, offsetFromTop, 150, 20, I18n.translate("modmenu.title"), parent));
+		this.addButton(new ButtonWidget(this.width / 2 - 150, offsetFromTop, 150, 20, I18n.translate("modmenu.title"), (buttonWidget) ->
+		{
+			client.openScreen(ModMenuApi.createModsScreen(parent));
+		}));
 		this.addButton(new ButtonWidget(this.width / 2, offsetFromTop, 150, 20, I18n.translate("options.resourcepack"), (buttonWidget) ->
 		{
 			client.openScreen(new ResourcePackOptionsScreen(parent, this.client.options));
