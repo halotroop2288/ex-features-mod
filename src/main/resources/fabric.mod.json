@@ -34,14 +34,17 @@
   "depends": {
     "fabricloader": ">=0.7.2",
     "fabric": "*",
-    "minecraft": "1.15.x",
+    "minecraft": ">=1.15",
     "voidfog": ">=2.2.1"
   },
   "suggests": {
-    "modmenu": "*",
+    "modmenu": ">=1.10",
     "indevworldgen": "*",
     "debrand": "*",
     "iamverysmart": "*",
     "trinkets": "*"
+  },
+  "breaks": {
+  	"modmenu": "<1.10"
   }
 }
