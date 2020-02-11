@@ -1,10 +1,8 @@
 package com.github.halotroop2288.exfeatures.registries.client;
 
 import com.github.halotroop2288.exfeatures.entities.SeatEntity;
-import com.github.halotroop2288.exfeatures.entities.render.InvisibleEntityRenderer;
-import com.github.halotroop2288.exfeatures.entities.render.PigmanRenderer;
-import com.github.halotroop2288.exfeatures.entities.render.SteveVillagerRenderer;
-import com.github.halotroop2288.exfeatures.entities.render.model.PigmanModel;
+import com.github.halotroop2288.exfeatures.entities.render.*;
+import com.github.halotroop2288.exfeatures.entities.render.model.*;
 import com.github.halotroop2288.exfeatures.registries.EntityRegistry;
 
 import net.fabricmc.api.EnvType;
@@ -18,7 +16,7 @@ public class RendererRegistry
 	{
 		EntityRendererRegistry.INSTANCE
 			.register(EntityRegistry.STEVE_VILLAGER, (entityRenderDispatcher, context) -> new SteveVillagerRenderer
-				(entityRenderDispatcher, new com.github.halotroop2288.exfeatures.entities.render.model.SteveVillagerModel(1, 64, 32), 1));
+				(entityRenderDispatcher, new SteveVillagerModel(1, 64, 64), 1));
 		EntityRendererRegistry.INSTANCE
 			.register(EntityRegistry.PIGMAN, (entityRenderDispatcher, context) -> new PigmanRenderer
 				(entityRenderDispatcher, new PigmanModel(1), 1));

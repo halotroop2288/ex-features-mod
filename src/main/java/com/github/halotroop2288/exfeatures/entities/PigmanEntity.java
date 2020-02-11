@@ -19,7 +19,7 @@ public class PigmanEntity extends VillagerEntity
 
 	@Override
 	protected SoundEvent getAmbientSound()
-	{ return SoundEvents.ENTITY_PIG_AMBIENT; }
+	{ return SoundEvents.ENTITY_ZOMBIE_PIGMAN_AMBIENT; }
 
 	@Override
 	protected SoundEvent getDeathSound()
@@ -45,4 +45,12 @@ public class PigmanEntity extends VillagerEntity
 		this.world.spawnEntity(zombiePigmanEntity);
 		this.remove();
 	}
+	
+	@Override
+	protected SoundEvent getTradingSound(boolean sold)
+	{ return SoundEvents.ENTITY_PIG_AMBIENT; }
+	
+	@Override
+	public SoundEvent getYesSound()
+	{ return SoundEvents.ENTITY_PIG_AMBIENT; }
 }
