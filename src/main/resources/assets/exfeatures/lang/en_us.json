@@ -36,6 +36,7 @@
 	"block.exfeatures.podzol_slab": "Podzol Slab",
 	"entity.exfeatures.pigman": "Pigman",
 	"entity.exfeatures.steve_villager": "Steve Villager",
+	"menu.exfeatures.configuration": "Ex-Features Configuration",
 	"menu.mods_packs.title": "Mods and Resource Packs",
 	"menu.locked_chest.title": "Steve Co. Supply Crate",
 	"menu.locked_chest.description": "You need a Steve Co. Supply Crate Key to open this. You can pick one up at the Minecraft store.",

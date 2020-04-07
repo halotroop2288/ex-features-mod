@@ -24,7 +24,8 @@
     "client": [
     "com.github.halotroop2288.exfeatures.ExFeaturesClient"
     ],
-    "server": [
+    "modmenu": [
+    "com.github.halotroop2288.exfeatures.ExFeaturesModMenuImpl"
     ]
   },
   "mixins": [
