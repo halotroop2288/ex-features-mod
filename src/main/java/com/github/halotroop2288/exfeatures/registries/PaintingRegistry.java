@@ -20,6 +20,6 @@ public class PaintingRegistry
 	// Just to make this needlessly complicated lmao
 	private static void registerMotive(String id, int width, int height)
 	{
-		Registry.register(Registry.MOTIVE, new Identifier("exfeatures", id), new PaintingMotive(width, height));
+		Registry.register(Registry.PAINTING_MOTIVE, new Identifier("exfeatures", id), new PaintingMotive(width, height));
 	}
 }

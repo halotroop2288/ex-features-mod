@@ -17,7 +17,7 @@ import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.placer.SimpleBlockPlacer;
-import net.minecraft.world.gen.stateprovider.WeightedStateProvider;
+import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 
 public class FlowerRegistry
 {
@@ -47,7 +47,7 @@ public class FlowerRegistry
 	private static void addFlowerFeature(Biome biome)
 	{
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.FLOWER.configure(
-			(new RandomPatchFeatureConfig.Builder((new WeightedStateProvider())
+			(new RandomPatchFeatureConfig.Builder((new WeightedBlockStateProvider())
 				.addState(ROSE.getDefaultState(), 5)
 				.addState(PAEONIA.getDefaultState(), 5)
 				.addState(CYAN_FLOWER.getDefaultState(), 5),
