@@ -359,15 +359,4 @@ public class ClassicTitleScreen extends Screen
 		GlStateManager.drawArrays(params.getMode(), 0, params.getCount());
 		params.getVertexFormat().endDrawing();
 	}
-
-	@Override
-	public boolean keyPressed(int key, int scancode, int action)
-	{
-		if (key == GLFW.GLFW_KEY_ESCAPE)
-		{
-			this.minecraft.openScreen(new ClassicTitleScreen());
-			return true;
-		}
-		return super.keyPressed(key, scancode, action);
-	}
 }
