@@ -6,15 +6,12 @@ import net.minecraft.util.registry.Registry;
 
 public class PaintingRegistry
 {
-	public static void registerPaintings(boolean doIt)
+	public static void registerPaintings()
 	{
-		if (doIt)
-		{
-			registerMotive("water", 32, 32);
-			registerMotive("earth", 32, 32);
-			registerMotive("fire", 32, 32);
-			registerMotive("air", 32, 32);
-		}
+		registerMotive("water", 32, 32);
+		registerMotive("earth", 32, 32);
+		registerMotive("fire", 32, 32);
+		registerMotive("air", 32, 32);
 	}
 	
 	// Just to make this needlessly complicated lmao

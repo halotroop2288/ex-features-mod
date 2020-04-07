@@ -33,19 +33,16 @@ public class BlockRegistry
 		{ return true; }
 	};
 
-	public static void registerBlocks(boolean doIt)
+	public static void registerBlocks()
 	{
-		if (doIt)
-		{
-			registerBlock("ruby_ore", RUBY_ORE);
-			registerBlock("crying_obsidian", CRYING_OBSIDIAN);
-			registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
-			registerBlock("unstable_tnt", UNSTABLE_TNT, ItemGroup.REDSTONE);
-			registerBlock("netherreactor", NETHER_REACTOR_CORE);
-			SlabRegistry.registerSlabs();
-			FlowerRegistry.registerFlowers();
-			FurnitureRegistry.registerFurniturePieces();
-		}
+		registerBlock("ruby_ore", RUBY_ORE);
+		registerBlock("crying_obsidian", CRYING_OBSIDIAN);
+		registerBlock("glowing_obsidian", GLOWING_OBSIDIAN);
+		registerBlock("unstable_tnt", UNSTABLE_TNT, ItemGroup.REDSTONE);
+		registerBlock("netherreactor", NETHER_REACTOR_CORE);
+		SlabRegistry.registerSlabs();
+		FlowerRegistry.registerFlowers();
+		FurnitureRegistry.registerFurniturePieces();
 	}
 
 	public static void registerBlock(String id, Block block, Item blockItem)

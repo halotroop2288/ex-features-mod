@@ -3,7 +3,6 @@ package com.github.halotroop2288.exfeatures.gui.menu;
 import java.nio.ByteBuffer;
 import java.util.Random;
 
-import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.ARBVertexBlend;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryUtil;
@@ -52,8 +51,10 @@ public class ClassicTitleScreen extends Screen
 	private static final double BLOCK_SPEED = 1;
 	private static String[] MINECRAFT_LOGO =
 	{ // @formatter:off
-			" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
-			" * * * * * * * **  *   **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+			" *   * * *   * *** *** *** *** *** ***",
+			" ** ** * **  * *   *   * * * * *    * ",
+			" * * * * * * * **  *   **  *** **   * ",
+			" *   * * *  ** *   *   * * * * *    * ",
 			" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 	private static final ItemStack BRUSH_TEXT = new ItemStack(Blocks.STONE);
 	private static final char CHAR_TEXT = '*';
@@ -87,16 +88,20 @@ public class ClassicTitleScreen extends Screen
 		{
 			MINECRAFT_LOGO = new String[]
 			{ // @formatter:off
-					" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
-					" * * * * * * * *   **  **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+					" *   * * *   * *** *** *** *** *** ***",
+					" ** ** * **  * *   *   * * * * *    * ",
+					" * * * * * * * *   **  **  *** **   * ",
+					" *   * * *  ** *   *   * * * * *    * ",
 					" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 		}
 		else
 		{
 			MINECRAFT_LOGO = new String[]
 			{ // @formatter:off
-					" *   * * *   * *** *** *** *** *** ***", " ** ** * **  * *   *   * * * * *    * ",
-					" * * * * * * * **  *   **  *** **   * ", " *   * * *  ** *   *   * * * * *    * ",
+					" *   * * *   * *** *** *** *** *** ***",
+					" ** ** * **  * *   *   * * * * *    * ",
+					" * * * * * * * **  *   **  *** **   * ",
+					" *   * * *  ** *   *   * * * * *    * ",
 					" *   * * *   * *** *** * * * * *    * " }; // @formatter:on
 		}
 	}

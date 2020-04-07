@@ -24,30 +24,24 @@ public class EntityRegistry
 		.size(EntityDimensions.fixed(1, 2)).build();
 	public static final EntityType<SeatEntity> SEAT = FabricEntityTypeBuilder.create(EntityCategory.MISC, SeatEntity::new).build();
 	
-	public static void registerEntities(boolean doIt)
+	public static void registerEntities()
 	{
 		registerEntity("seat", SEAT);
-		if (doIt)
-		{
-			registerEntity("pigman", PIGMAN);
-			registerEntity("steve_villager", STEVE_VILLAGER);
-		}
+		registerEntity("pigman", PIGMAN);
+		registerEntity("steve_villager", STEVE_VILLAGER);
 	}
 	
 	private static void registerEntity(String name, EntityType<?> entity)
 	{ Registry.register(Registry.ENTITY_TYPE, new Identifier("exfeatures", name), entity); }
 	
-	public static void registerEntitySpawns(boolean doIt)
+	public static void registerEntitySpawns()
 	{
 		final SpawnEntry GIANT_ZOMBIE_SPAWN = new SpawnEntry(EntityType.GIANT, config.giantSpawnMin(), config.giantSpawnMed(), config.giantSpawnMax());
 		final SpawnEntry ZOMBIE_HORSE_SPAWN = new SpawnEntry(EntityType.ZOMBIE_HORSE, config.zombieHorseSpawnMin(), config.zombieHorseSpawnMed(), config.zombieHorseSpawnMax());
 		
-		if (doIt)
-		{
-			Biomes.DESERT.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
-			Biomes.PLAINS.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
-			Biomes.DEFAULT.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
-			Biomes.BADLANDS.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
-		}
+		Biomes.DESERT.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
+		Biomes.PLAINS.getEntitySpawnList(EntityCategory.MONSTER).add(GIANT_ZOMBIE_SPAWN);
+		Biomes.DEFAULT.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
+		Biomes.BADLANDS.getEntitySpawnList(EntityCategory.MONSTER).add(ZOMBIE_HORSE_SPAWN);
 	}
 }

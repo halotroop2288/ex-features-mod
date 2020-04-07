@@ -26,11 +26,11 @@ public class ExFeatures implements ModInitializer
 	    useIndev = FabricLoader.getInstance().isModLoaded("indevworldgen") && config.indevEnabled();
 	    
 		SoundRegistry.registerSounds(); // Sounds must be registered for other features
-		EntityRegistry.registerEntities(config.registerEntities());
-		EntityRegistry.registerEntitySpawns(config.spawnUnusedMobs());
-		BlockRegistry.registerBlocks(config.registerBlocks());
-		ItemRegistry.registerItems(config.registerItems());
-		PaintingRegistry.registerPaintings(config.registerPaintings());
+		if (config.registerEntities()) EntityRegistry.registerEntities();
+		if (config.spawnUnusedMobs()) EntityRegistry.registerEntitySpawns();
+		if (config.registerBlocks()) BlockRegistry.registerBlocks();
+		if (config.registerItems()) ItemRegistry.registerItems();
+		if (config.registerPaintings()) PaintingRegistry.registerPaintings();
 		System.out.println("Ex-Features loaded.");
 	}
 }
