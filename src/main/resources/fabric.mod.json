@@ -1,51 +1,47 @@
 {
-  "schemaVersion": 1,
-  "id": "exfeatures",
-  "version": "${version}",
-
-  "name": "Ex-Features Mod",
-  "description": "This mod re-adds features that have been removed from Minecraft JE, and ports over features from other editions of Minecraft that never made it to PC.",
-  "authors": [
-    "halotroop2288"
-  ],
-  "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/ex-features",
-    "sources": "https://github.com/halotroop2288/exfeatures-mod"
-  },
-
-  "license": "WTFPL",
-  "icon": "assets/exfeatures/icon.png",
-
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-	"com.github.halotroop2288.exfeatures.ExFeatures"
-    ],
-    "client": [
-    "com.github.halotroop2288.exfeatures.ExFeaturesClient"
-    ],
-    "modmenu": [
-    "com.github.halotroop2288.exfeatures.ExFeaturesModMenuImpl"
-    ]
-  },
-  "mixins": [
-  "exfeatures.mixins.json"
-  ],
-
-  "depends": {
-    "fabricloader": ">=0.7.2",
-    "fabric": "*",
-    "minecraft": "1.15.x",
-    "voidfog": ">=2.2.1"
-  },
-  "suggests": {
-    "modmenu": ">=1.10",
-    "indevworldgen": "*",
-    "debrand": "*",
-    "iamverysmart": "*",
-    "trinkets": "*"
-  },
-  "breaks": {
-  	"modmenu": "<1.10"
-  }
+	"schemaVersion": 1,
+	"id": "exfeatures",
+	"version": "${version}",
+	"name": "Ex-Features Mod",
+	"description": "This mod re-adds features that have been removed from Minecraft JE, and ports over features from other editions of Minecraft that never made it to PC.",
+	"authors": [
+		"halotroop2288"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/ex-features",
+		"sources": "https://github.com/halotroop2288/exfeatures-mod"
+	},
+	"license": "GPLv3",
+	"icon": "assets/exfeatures/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.github.halotroop2288.exfeatures.ExFeatures"
+		],
+		"client": [
+			"com.github.halotroop2288.exfeatures.ExFeaturesClient"
+		],
+		"modmenu": [
+			"com.github.halotroop2288.exfeatures.ExFeaturesModMenuImpl"
+		]
+	},
+	"mixins": [
+		"exfeatures.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.7.2",
+		"fabric": "*",
+		"minecraft": "1.15.x",
+		"voidfog": ">=2.2.1"
+	},
+	"suggests": {
+		"modmenu": ">=1.10",
+		"indevworldgen": "*",
+		"debrand": "*",
+		"iamverysmart": "*",
+		"trinkets": "*"
+	},
+	"breaks": {
+		"modmenu": "<1.10"
+	}
 }
