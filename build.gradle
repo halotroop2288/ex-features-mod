@@ -39,14 +39,6 @@ repositories {
 		name = "NerdHubMC"
 		url = "https://maven.abusedmaster.xyz/"
 	}
-    maven {
-        name = 'minelp'
-        url = 'http://repo.minelittlepony-mod.com/maven/snapshot'
-    }
-    maven {
-        name = 'minelp-release'
-        url = 'http://repo.minelittlepony-mod.com/maven/release'
-    }
 }
 
 dependencies {
@@ -62,12 +54,6 @@ dependencies {
 	modImplementation "io.github.prospector:modmenu:${modmenu_version}"
 	modImplementation "io.github.cottonmc:LibGui:${libgui_version}"
 	include "io.github.cottonmc:LibGui:${libgui_version}"
-//	modImplementation "curse.maven:trinkets-fabric:2850688"
-	
-    modApi "com.minelittlepony:Kirin:1.5.2-1.15.+"
-    
-//  include "com.tamaized:Void-Fog:+" // Crashes the game due to a bug with Mixin and Fabric loader.
-	modImplementation "com.tamaized:Void-Fog:+"
 }
 
 // Removed these places where the API keys were because honestly, it was just a security issue. I didn't really need them.
