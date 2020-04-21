@@ -67,12 +67,10 @@ public class ClassicTitleScreen extends Screen
 	private static final Identifier ACCESSIBILITY_ICON = new Identifier("minecraft", "textures/gui/accessibility.png");
 	private String splashText;
 	private LogoEffectRandomizer[][] logoEffects;
-	private float time;
 
 	public ClassicTitleScreen()
 	{
 		super(new TranslatableText("narrator.screen.title"));
-		time = 0;
 	}
 
 	@Override
