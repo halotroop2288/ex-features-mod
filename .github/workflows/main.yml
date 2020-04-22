@@ -1,12 +1,11 @@
-name: Build Mod
-on: [push, pull_request]
+name: Build Mod and Upload Artifact
+on: [push]
 jobs:
   gradle:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        java-version:
-          - 8
+        java-version: [8, 11, 14]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Project
@@ -28,5 +27,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
-          name: Mod Builds
+          name: JARs
           path: build/libs
