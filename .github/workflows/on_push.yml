@@ -4,9 +4,7 @@ jobs:
   gradle:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        java-version:
-          - 8
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout Project
@@ -17,12 +15,13 @@ jobs:
       - name: Setup Java
         uses: actions/setup-java@v1
         with:
-          java-version: ${{ matrix.java-version }}
+          java-version: 8
 
       - name: Allow Access
+        if:  contains(${{ matrix.os}}, ubuntu)
         run: chmod +x gradlew
 
-      - name: Build Mod
+      - name: Build Mod JARs
         run: ./gradlew build --refresh-dependencies
 
       - name: Upload Artifact
