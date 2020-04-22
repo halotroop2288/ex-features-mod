@@ -22,7 +22,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Mod JARs
-        run: ./gradlew build --refresh-dependencies
+        run: ./gradlew build --refresh-dependencies --stacktrace
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
