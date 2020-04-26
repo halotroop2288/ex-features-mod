@@ -16,6 +16,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           lfs: true
+      - name: Allow Permissions
+        run: chmod +x ./gradlew
       - name: "Run Fabric Tests"
         uses: Geometrically/fabric-test-runner@v1
         id: testRunner
