@@ -1,9 +1,9 @@
-name: Test Integrity
+name: Test PR/Workflow Integrity
 on:
   pull_request:
     paths: [ '**.java', '**.gradle', 'gradle.properties' ]
   push:
-    paths: [ '.github/workflows/on_pr.yml' ]
+    paths: [ '.github/workflows/', '.github/workflows/on_push.yml' ]
 jobs:
   gradle:
     strategy:
@@ -18,7 +18,7 @@ jobs:
       - name: Allow Permissions
         run: chmod +x ./gradlew
       - name: "Run Fabric Tests"
-        uses: Geometrically/fabric-test-runner@v1
+        uses: Geometrically/fabric-test-runner@v1.1
         id: testRunner
         with:
           minecraftVersion: ${{ matrix.minecraftVersion }}
