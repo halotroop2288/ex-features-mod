@@ -1,7 +1,7 @@
 name: Build Mod and Upload Artifact
 on: 
   push:
-    paths: [ '**.java', '**.gradle', 'gradle.properties', '.github/workflows/on_push.yml' ]
+    paths: [ '**.java', '**.gradle', 'gradle.properties' ]
 jobs:
   gradle:
     strategy:
