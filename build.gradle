@@ -45,7 +45,7 @@ dependencies {
 	//to change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.minecraft_version}+build+:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}+build.+"
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}+"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
 	include "org.aeonbits.owner:owner:${config_version}"

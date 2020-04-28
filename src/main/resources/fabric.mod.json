@@ -31,8 +31,7 @@
 	"depends": {
 		"fabricloader": ">=0.7.2",
 		"fabric": "*",
-		"minecraft": "1.15.x",
-		"voidfog": ">=2.2.1"
+		"minecraft": "1.15.x"
 	},
 	"suggests": {
 		"modmenu": ">=1.10",
@@ -40,7 +39,8 @@
 		"debrand": "*",
 		"iamverysmart": "*",
 		"trinkets": "*",
-		"prettyplanks": "*"
+		"prettyplanks": "*",
+		"voidfog": "*"
 	},
 	"breaks": {
 		"modmenu": "<1.10"
